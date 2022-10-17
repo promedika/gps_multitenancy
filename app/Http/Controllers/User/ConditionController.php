@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Rules\ImageUpload as RulesImageUpload;
 use Spatie\Multitenancy\Models\Tenant;
-use Illuminate\Support\Facades\DB;
 
 class ConditionController extends Controller
 {

@@ -183,9 +183,9 @@ class ComplainController extends Controller
         return response()->json($array, 200);
     }
 
-    public function generate($offset)
+    public function generate()
         {
-        $complains = Complain::offset($offset * 100)->take(100)->get();
+        $complains = Complain::all();
 
         ini_set('max_execution_time', 300);
         $pdf = PDF::loadView('complain.pdf', ['complains' => $complains]);

@@ -18,7 +18,7 @@
                 <a class="mx-2 text-green-600 hover:text-gray-400" href="{{ route('complain.create') }}">
                     <i class="fas fa-plus"></i>
                 </a>
-                <a class="mx-2 text-green-600 hover:text-gray-400" target="blank" href="/complain/pdf">   
+                <a class="mx-2 text-green-600 hover:text-gray-400" target="blank" href="{{ route('complain.generate') }}">   
                     <i class="fa fa-print"></i>
                 </a>
                 @endif

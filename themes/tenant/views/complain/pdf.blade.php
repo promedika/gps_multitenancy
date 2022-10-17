@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+{{-- <style>
 
 *{
     box-sizing: border-box;
@@ -20,6 +20,7 @@ body{
   display: flex;
   border-bottom:1pt solid black;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .row:last-child{
@@ -47,9 +48,24 @@ th, td {
     margin-right: auto;
 }
 
+</style> --}}
+<style>
+    .tbl {
+        margin-bottom: 100px; 
+    }
+    .tbl td.row {
+        width: 50%;
+    }
+    .tbl2 td{
+        vertical-align: top;
+    }
+    .row2{
+        vertical-align: text-top;
+    }
+
 </style>
 </head>
-<body onload="window.print()">
+<body>
     {{-- <script type="text/php">
         if ( isset($pdf) ) {
             $font = $fontMetrics->get_font("helvetica");
@@ -57,100 +73,89 @@ th, td {
         }
     </script> --}}
     @foreach ($complains as $comp)
-    <div class="row">
-            <div class= "column center">
-            <table>
-                <header>
-                    <div style="margin-left:5%;">
-                    <span>
-                        {{ 'Ticket ID '.$comp->id }}
-                        <div style="font-size: 11px;">
-                            {{ __('Created at : '.$comp->created_at) }}
-                        </div>
-                    </span>
-                    </div>
-                </header>
-                <tr>
-                    <td>      
-                        
-                        {{-- <img src="{{ url($comp->comPic) }}" onerror="this.src = '/images/no_image.jpg';"> --}}
-                        <?php
-                            $imgCom=isset($comp->comPic) ? url($comp->comPic):'/images/no_image.jpg';
-                        ?>
-                        <img src="{{$imgCom}}">  
-                    </td>
-                </tr>
-                <tr>
-                    <td>Barcode: {{ $comp->Barcode}} </td>
-                </tr>
-                <tr>
-                    <td>Keterangan : {{ $comp->description}}</td>
-                </tr>
-                <tr>
-                    <td>Unit : {{ $comp->room->unit}}</td>
-                </tr>
-                <tr>
-                    <td>Ruangan : {{ $comp->room->room_name }}</td>
-                </tr>
-                <tr>
-                    <td>Tanggal Tiket : {{ $comp->date_time }}</td>
-                </tr>
-            </table>
-            </div>
-            <div class="column center">
-                <header> 
-                    <div style="margin-left:5%;">
-                    <span>
-                        {{ 'Response ID '.$comp->response->id }}
-                        <div style="font-size: 11px;">
-                            {{ __('Created at : '.$comp->response->created_at) }}
-                        </div>
-                    </span>
-                    </div>
-                    </header>       
-                <table>
-                    <tr>
-                        <td>
-                            {{-- <img src="{{ url($comp->response->resPic) }}" onerror="this.src = '/images/no_image.jpg';">  --}}
-                            <?php
-                                $imgRes=isset($comp->response->resPic) ? url($comp->response->resPic):'/images/no_image.jpg';
-                            ?>
-                            <img src="{{$imgRes}}">
-                        </td>
-                    </tr>
-                    <tr>   
-                        <td>Barcode: {{$comp->response->barcode}}</td>
-                    </tr>
-                    <tr> 
-                        <td>Keterangan : {{ $comp->response->description}}</td>
-                    </tr>
-                    <tr>
-                        <td>Status : {{ $comp->response->status}}</td>
-                    </tr>
-                    <tr>
-                        <td>Status Respon : {{ $comp->response->progress_status}}</td>
-                    </tr>
-                    <tr>
-                        <td>Tanggal Respon : {{ $comp->response->created_at}}</td>  
-                    </tr>
-                {{-- <tr>
-                    <td style="text-align: left;";"></td>
-                    <td>Nomor Seri : </td>
-                    <td> {{ $inv->serial }}</td>
-                </tr>
-                <tr>
-                    <td style="text-align: left;";"></td>
-                    <td colspan="2">
-                        @if (strlen($inv->barcode) < 4)
-                            {{ $inv->barcode }}
-                        @else
-                            <img style="margin: 0px;" src="data:image/png;base64,{{ base64_encode($generatorPNG->getBarcode(substr($inv->barcode, 3), $generatorPNG::TYPE_CODE_128)) }}">
-                        @endif
-                    </td>
-                </tr> --}}
-            </table>
-            </div>
-        </div>
+        <table class="tbl" width='100%'>
+            <tr>
+                <td class="row">
+                    <table class="tbl2">
+                        <tr>
+                            <td>Ticket ID</td>
+                            <td>{{$comp->id}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Created at : ')}}</td>
+                            <td>{{$comp->created_at}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <?php
+                                $imgCom=isset($comp->comPic) ? url($comp->comPic):public_path('/images/no_image.jpg');
+                                ?>
+                            <img style="width: 300px;height:200px" src="{{$imgCom}}"></td>
+                        </tr>
+                        <tr>
+                            <td>Barcode: </td>
+                            <td>{{ $comp->Barcode}}</td>
+                        </tr>
+                        <tr>
+                            <td>Keterangan: </td>
+                            <td>{{$comp->description}}</td>
+                        </tr>
+                        <tr>
+                            <td>Unit : </td>
+                            <td>{{ $comp->room->unit}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ruangan: </td>
+                            <td>{{$comp->room->room_name}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100px">Tanggal Tiket:</td>
+                            <td>{{$comp->date_time}}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="row2">
+                    <table class="tbl2">
+                        <tr>
+                            <td>Response ID</td>
+                            <td>{{$comp->response->id}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ __('Created at : ')}}</td>
+                            <td>{{$comp->response->created_at}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <?php
+                                        $imgRes=isset($comp->response->resPic) ? url($comp->comPic):public_path('/images/no_image.jpg');
+                                    ?>
+                                    <img style="width: 300px;height:200px"src="{{$imgRes}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Barcode: </td>
+                            <td>{{$comp->response->barcode}}</td>
+                        </tr>
+                        <tr>
+                            <td>Keterangan :</td>
+                            <td>{{ $comp->response->description}}</td>
+                        </tr>
+                        <tr>
+                            <td>Status : </td>
+                            <td>{{ $comp->response->status}}</td>
+                        </tr>
+                        <tr>
+                            <td>Status Respon :</td>
+                            <td>{{ $comp->response->progress_status}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tanggal Respon : </td>
+                            <td>{{ $comp->response->created_at}}</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
     @endforeach
 </body>
 </html>

@@ -198,7 +198,8 @@ if (Tenant::current()) {
                 Route::post('/update/{identity}', [IdentityController::class, 'update'])->name('identity.update');
                 Route::get('/delete/{identity}', [IdentityController::class, 'destroy'])->name('identity.delete');
             });
-            Route::get('complain/pdf', [ComplainController::class, 'pdf']);
+            Route::get('complain/pdf', [ComplainController::class, 'pdf'])->name('complain.pdf');
+            Route::get('complain/pdf/generate',[ComplainController::class,'generate'])->name('complain.generate');
             Route::prefix('complain')->group(function () {
                 Route::get('/', [ComplainController::class, 'index'])->name('complain.index');
                 Route::get('/create', [ComplainController::class, 'create'])->name('complain.create');
