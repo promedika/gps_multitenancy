@@ -71,7 +71,13 @@ class MaintenanceController extends Controller
      */
     public function show(Maintenance $maintenance)
     {
-        //
+        $raw = json_decode($maintenance->raw);
+        // dd($maintenance,$raw);
+        return view('maintenance.show', [
+            'maintenance' => $maintenance, 
+            'inventories' => Inventory::all(),
+            'raw' => $raw
+        ]);
     }
 
     /**
@@ -83,9 +89,12 @@ class MaintenanceController extends Controller
     public function edit(Maintenance $maintenance)
     {
         // dd($maintenance);
+        $raw = json_decode($maintenance->raw);
+        // dd($maintenance,$raw);
         return view('maintenance.edit', [
             'maintenance' => $maintenance, 
-            'inventories' => Inventory::all()
+            'inventories' => Inventory::all(),
+            'raw' => $raw
         ]);
     }
 
@@ -131,7 +140,9 @@ class MaintenanceController extends Controller
 
     public function pdf(Maintenance $maintenance)
     {
+        ini_set('max_execution_time', 0);
         $raw = json_decode($maintenance->raw);
+        // dd($maintenance,$raw);
         $pdf = PDF::loadView('maintenance.pdf', ['maintenance' => $maintenance, 'raw' => $raw]);
 
         return $pdf->stream('ipm_form'.strtotime(date('Y-m-d H:i:s')).'.pdf');

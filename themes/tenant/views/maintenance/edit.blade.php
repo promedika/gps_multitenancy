@@ -66,7 +66,13 @@
                     </div>
                     <div class="my-1 grid grid-cols-2">
                         <p>S / N</p>
-                        <p>: {{ $maintenance->inventory->barcode }}/p>
+                        <p>: 
+                            @if ($maintenance->inventory->identity->serial)
+                                {{ $maintenance->inventory->identity->serial }}
+                            @else
+                                -
+                            @endif
+                        </p>
                     </div>
                     <div class="my-1 grid grid-cols-2">
                         <p>Nomor Kalibrasi</p>
@@ -176,7 +182,7 @@
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
                                                 <input disabled 
-                                                    @if ($raw->is_tools[0])
+                                                    @if (isset($raw->is_tools[0]) && $raw->is_tools[0] == "on")
                                                         checked
                                                     @endif
                                                     type="checkbox" name="is_tools[]" class="hidden">
@@ -192,7 +198,7 @@
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
                                                 <input disabled 
-                                                @if ($raw->is_tools[])
+                                                @if (isset($raw->is_tools[1]) && $raw->is_tools[1] == "on")
                                                     checked
                                                 @endif
                                                 type="checkbox" name="is_tools[]" class="hidden">
@@ -207,19 +213,27 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input disabled type="checkbox" name="is_tools[]" class="hidden">
+                                                <input disabled 
+                                                @if (isset($raw->is_tools[2]) && $raw->is_tools[2] == "on")
+                                                    checked
+                                                @endif
+                                                type="checkbox" name="is_tools[]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
                                     </td>
                                     <td class="w-4">7.<td>
                                     <td class="w-32">
-                                        <input type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                                        <input disabled value="{{ $raw->tools[1] }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="checkbox" name="is_tools[]" class="hidden">
+                                                <input disabled
+                                                @if (isset($raw->is_tools[3]) && $raw->is_tools[3] == "on")
+                                                    checked
+                                                @endif
+                                                type="checkbox" name="is_tools[]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -231,19 +245,27 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input disabled type="checkbox" name="is_tools[]" class="hidden">
+                                                <input disabled 
+                                                @if (isset($raw->is_tools[4]) && $raw->is_tools[4] == "on")
+                                                    checked
+                                                @endif
+                                                type="checkbox" name="is_tools[]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
                                     </td>
                                     <td class="w-4">8.<td>
                                     <td class="w-32">
-                                        <input type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                                        <input disabled value="{{ $raw->tools[2] }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="checkbox" name="is_tools[]" class="hidden">
+                                                <input disabled 
+                                                @if (isset($raw->is_tools[5]) && $raw->is_tools[5] == "on")
+                                                    checked
+                                                @endif
+                                                type="checkbox" name="is_tools[]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -255,19 +277,27 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input disabled type="checkbox" name="is_tools[]" class="hidden">
+                                                <input disabled 
+                                                @if (isset($raw->is_tools[6]) && $raw->is_tools[6] == "on")
+                                                    checked
+                                                @endif
+                                                type="checkbox" name="is_tools[]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
                                     </td>
                                     <td class="w-4">9.<td>
                                     <td class="w-32">
-                                        <input type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                                        <input disabled value="{{ $raw->tools[3] }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="checkbox" name="is_tools[]" class="hidden">
+                                                <input disabled 
+                                                @if (isset($raw->is_tools[7]) && $raw->is_tools[7] == "on")
+                                                    checked
+                                                @endif
+                                                type="checkbox" name="is_tools[]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -279,19 +309,27 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input disabled type="checkbox" name="is_tools[]" class="hidden">
+                                                <input disabled 
+                                                @if (isset($raw->is_tools[8]) && $raw->is_tools[8] == "on")
+                                                    checked
+                                                @endif
+                                                type="checkbox" name="is_tools[]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
                                     </td>
                                     <td class="w-4">10.<td>
                                     <td class="w-32">
-                                        <input type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                                        <input disabled value="{{ $raw->tools[4] }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="checkbox" name="is_tools[]" class="hidden">
+                                                <input disabled 
+                                                @if (isset($raw->is_tools[9]) && $raw->is_tools[9] == "on")
+                                                    checked
+                                                @endif
+                                                type="checkbox" name="is_tools[]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -308,21 +346,33 @@
                         <p class="flex items-center col-span-2">Penempatan Alat : </p>
                         <label class="custom-label flex ml-3">
                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                <input type="radio" name="placement" value="good" class="hidden">
+                                <input disabled 
+                                @if ($raw->placement == "good")
+                                    checked
+                                @endif
+                                type="radio" name="placement" value="good" class="hidden">
                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                             </div>
                             <span class="select-none">Baik</span>
                         </label>
                         <label class="custom-label flex ml-3">
                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                <input type="radio" name="placement" value="bad" class="hidden">
+                                <input disabled 
+                                @if ($raw->placement == "bad")
+                                    checked
+                                @endif
+                                type="radio" name="placement" value="bad" class="hidden">
                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                             </div>
                             <span class="select-none">Tidak</span>
                         </label>
                         <label class="custom-label flex ml-3">
                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                <input type="radio" name="placement" value="none" class="hidden">
+                                <input disabled 
+                                @if ($raw->placement == "none")
+                                    checked
+                                @endif
+                                type="radio" name="placement" value="none" class="hidden">
                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                             </div>
                             <span class="select-none">N / A</span>
@@ -332,21 +382,33 @@
                         <p class="flex items-center col-span-2">Roda / Troli / Bracket : </p>
                         <label class="custom-label flex ml-3">
                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                <input type="radio" name="extra" value="good" class="hidden">
+                                <input disabled 
+                                @if ($raw->extra == "good")
+                                    checked
+                                @endif
+                                type="radio" name="extra" value="good" class="hidden">
                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                             </div>
                             <span class="select-none">Baik</span>
                         </label>
                         <label class="custom-label flex ml-3">
                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                <input type="radio" name="extra" value="bad" class="hidden">
+                                <input disabled 
+                                @if ($raw->extra == "bad")
+                                    checked
+                                @endif
+                                type="radio" name="extra" value="bad" class="hidden">
                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                             </div>
                             <span class="select-none">Tidak</span>
                         </label>
                         <label class="custom-label flex ml-3">
                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                <input type="radio" name="extra" value="none" class="hidden">
+                                <input disabled 
+                                @if ($raw->extra == "none")
+                                    checked
+                                @endif
+                                type="radio" name="extra" value="none" class="hidden">
                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                             </div>
                             <span class="select-none">N / A</span>
@@ -371,19 +433,31 @@
                         <div class="flex justify-evenly">
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="physic_main" value="0" class="hidden">
+                                    <input disabled 
+                                    @if ($raw->physic_main == "0")
+                                        checked
+                                    @endif
+                                    type="radio" name="physic_main" value="0" class="hidden">
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="physic_main" value="1" class="hidden">
+                                    <input disabled 
+                                    @if ($raw->physic_main == "1")
+                                        checked
+                                    @endif
+                                    type="radio" name="physic_main" value="1" class="hidden">
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="physic_main" value="2" class="hidden">
+                                    <input disabled 
+                                    @if ($raw->physic_main == "2")
+                                        checked
+                                    @endif
+                                    type="radio" name="physic_main" value="2" class="hidden">
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
@@ -391,13 +465,21 @@
                         <div class="flex justify-evenly">
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="condition_main" value="clean" class="hidden">
+                                    <input disabled 
+                                    @if ($raw->condition_main == "clean")
+                                        checked
+                                    @endif
+                                    type="radio" name="condition_main" value="clean" class="hidden">
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="condition_main" value="dirty" class="hidden">
+                                    <input disabled 
+                                    @if ($raw->condition_main == "dirty")
+                                        checked
+                                    @endif
+                                    type="radio" name="condition_main" value="dirty" class="hidden">
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
@@ -407,19 +489,31 @@
                         <div class="flex justify-evenly">
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="physic_extra" value="0" class="hidden">
+                                    <input disabled 
+                                    @if ($raw->physic_extra == "0")
+                                        checked
+                                    @endif
+                                    type="radio" name="physic_extra" value="0" class="hidden">
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="physic_extra" value="1" class="hidden">
+                                    <input disabled 
+                                    @if ($raw->physic_extra == "1")
+                                        checked
+                                    @endif
+                                    type="radio" name="physic_extra" value="1" class="hidden">
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="physic_extra" value="2" class="hidden">
+                                    <input disabled 
+                                    @if ($raw->physic_extra == "2")
+                                        checked
+                                    @endif
+                                    type="radio" name="physic_extra" value="2" class="hidden">
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
@@ -427,13 +521,21 @@
                         <div class="flex justify-evenly">
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="condition_extra" value="clean" class="hidden">
+                                    <input disabled 
+                                    @if ($raw->condition_extra == "clean")
+                                        checked
+                                    @endif
+                                    type="radio" name="condition_extra" value="clean" class="hidden">
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="condition_extra" value="dirty" class="hidden">
+                                    <input disabled 
+                                    @if ($raw->condition_extra == "dirty")
+                                        checked
+                                    @endif
+                                    type="radio" name="condition_extra" value="dirty" class="hidden">
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
@@ -455,11 +557,14 @@
                                     <span class="ml-2 text-xs flex items-center">Tahanan hubungan pertanahan</span>
                                 </td>
                                 <td class="form-check">
-                                    <input onclick="toggleInput(this)" id="el1" name="is_el[]" value="el1" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault">
+                                    <input onclick="toggleInput(this)" id="el1" name="is_el[]" value="el1" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault" 
+                                    data-el="@php echo (!in_array('el1', $raw->is_el)) ? 'checked' : ''; @endphp"
+                                    >
                                 </td>
                                 <td class="flex justify-start pl-2">
                                     <p id="el1Node" class="hidden items-center col-span-2">
-                                        <input type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
+                                        <input type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"
+                                        value="{{ $raw->el[0] }}"> 
                                         &nbsp;&#8804;0,2&#8486;&nbsp;&nbsp;&nbsp;
                                     </p>
                                 </td>
@@ -469,11 +574,14 @@
                                     <span class="ml-2 pr-1 text-xs flex items-center break-normal">Arus bocor Casis dengan Pembumian</span>
                                 </td>
                                 <td>
-                                    <input onclick="toggleInput(this)" id="el2" name="is_el[]" value="el2" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault">
+                                    <input onclick="toggleInput(this)" id="el2" name="is_el[]" value="el2" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault" 
+                                    data-el="@php echo (!in_array('el2', $raw->is_el)) ? 'checked' : ''; @endphp"
+                                    >
                                 </td>
                                 <td class="flex justify-start pl-2">
                                     <p id="el2Node" class="hidden items-center col-span-2">
-                                        <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
+                                        <input type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"
+                                        value="{{ $raw->el[1] }}"> 
                                         &nbsp;&#8804;100&#xb5;A
                                     </p>
                                 </td>
@@ -483,11 +591,13 @@
                                     <span class="ml-2 pr-1 text-xs col-span-3 flex items-center break-normal">Arus bocor Casis tanpa Pembumian</span>
                                 </td>
                                 <td>
-                                    <input onclick="toggleInput(this)" id="el3" name="is_el[]" value="el3" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault">
+                                    <input onclick="toggleInput(this)" id="el3" name="is_el[]" value="el3" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault"
+                                    data-el="@php echo (!in_array('el3', $raw->is_el)) ? 'checked' : ''; @endphp"
+                                    >
                                 </td>
                                 <td class="flex justify-start pl-2">
                                     <p id="el3Node" class="hidden items-center col-span-2">
-                                        <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
+                                        <input type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ $raw->el[2] }}"> 
                                         &nbsp;&#8804;500&#xb5;A
                                     </p>
                                 </td>
@@ -497,11 +607,13 @@
                                     <span class="ml-2 pr-1 text-xs col-span-3 flex items-center break-normal">Arus bocor Casis Polaritas terbalik dengan Pembumian</span>
                                 </td>
                                 <td>
-                                    <input onclick="toggleInput(this)" id="el4" name="is_el[]" value="el4" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault">
+                                    <input onclick="toggleInput(this)" id="el4" name="is_el[]" value="el4" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault"
+                                    data-el="@php echo (!in_array('el4', $raw->is_el)) ? 'checked' : ''; @endphp"
+                                    >
                                 </td>
                                 <td class="flex justify-start pl-2">
                                     <p id="el4Node" class="hidden items-center col-span-2">
-                                        <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
+                                        <input type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ $raw->el[3] }}"> 
                                         &nbsp;&#8804;100&#xb5;A
                                     </p>
                                 </td>
@@ -511,11 +623,13 @@
                                     <span class="ml-2 pr-1 text-xs col-span-3 flex items-center break-normal">Arus bocor Casis Polaritas terbalik tanpa Pembumian</span>
                                 </td>
                                 <td>
-                                    <input onclick="toggleInput(this)" id="el5" name="is_el[]" value="el5" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault">
+                                    <input onclick="toggleInput(this)" id="el5" name="is_el[]" value="el5" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault" 
+                                    data-el="@php echo (!in_array('el5', $raw->is_el)) ? 'checked' : ''; @endphp"
+                                    >
                                 </td>
                                 <td class="flex justify-start pl-2">
                                     <p id="el5Node" class="hidden items-center col-span-2">
-                                        <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
+                                        <input type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ $raw->el[4] }}"> 
                                         &nbsp;&#8804;500&#xb5;A
                                     </p>
                                 </td>
@@ -556,7 +670,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[0]" value="0" class="hidden">
+                                                <input type="radio" name="func[0]" value="0" class="hidden" 
+                                                @if ($raw->func[0] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -564,7 +681,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[0]" value="1" class="hidden">
+                                                <input type="radio" name="func[0]" value="1" class="hidden" 
+                                                @if ($raw->func[0] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -572,7 +692,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[0]" value="2" class="hidden">
+                                                <input type="radio" name="func[0]" value="2" class="hidden" 
+                                                @if ($raw->func[0] == "2")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -585,7 +708,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[1]" value="0" class="hidden">
+                                                <input type="radio" name="func[1]" value="0" class="hidden" 
+                                                @if ($raw->func[1] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -593,7 +719,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[1]" value="1" class="hidden">
+                                                <input type="radio" name="func[1]" value="1" class="hidden" 
+                                                @if ($raw->func[1] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -601,7 +730,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[1]" value="2" class="hidden">
+                                                <input type="radio" name="func[1]" value="2" class="hidden" 
+                                                @if ($raw->func[1] == "2")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -614,7 +746,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[2]" value="0" class="hidden">
+                                                <input type="radio" name="func[2]" value="0" class="hidden" 
+                                                @if ($raw->func[2] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -622,7 +757,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[2]" value="1" class="hidden">
+                                                <input type="radio" name="func[2]" value="1" class="hidden" 
+                                                @if ($raw->func[2] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -630,7 +768,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[2]" value="2" class="hidden">
+                                                <input type="radio" name="func[2]" value="2" class="hidden" 
+                                                @if ($raw->func[2] == "2")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -643,7 +784,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[3]" value="0" class="hidden">
+                                                <input type="radio" name="func[3]" value="0" class="hidden" 
+                                                @if ($raw->func[3] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -651,7 +795,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[3]" value="1" class="hidden">
+                                                <input type="radio" name="func[3]" value="1" class="hidden" 
+                                                @if ($raw->func[3] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -659,7 +806,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[3]" value="2" class="hidden">
+                                                <input type="radio" name="func[3]" value="2" class="hidden" 
+                                                @if ($raw->func[3] == "2")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -672,7 +822,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[4]" value="0" class="hidden">
+                                                <input type="radio" name="func[4]" value="0" class="hidden" 
+                                                @if ($raw->func[4] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -680,7 +833,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[4]" value="1" class="hidden">
+                                                <input type="radio" name="func[4]" value="1" class="hidden" 
+                                                @if ($raw->func[4] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -688,7 +844,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="func[4]" value="2" class="hidden">
+                                                <input type="radio" name="func[4]" value="2" class="hidden" 
+                                                @if ($raw->func[4] == "2")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -731,7 +890,9 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="complete[0]" value="0" class="hidden">
+                                                <input type="radio" name="complete[0]" value="0" class="hidden"@if ($raw->complete[0] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -739,7 +900,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="complete[0]" value="1" class="hidden">
+                                                <input type="radio" name="complete[0]" value="1" class="hidden"
+                                                @if ($raw->complete[0] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -747,7 +911,9 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="complete[0]" value="2" class="hidden">
+                                                <input type="radio" name="complete[0]" value="2" class="hidden"@if ($raw->complete[0] == "2")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -790,46 +956,61 @@
                     <div class="px-2 py-1 my-1">
                         <table class="align-middle w-full">
                             <tbody id="performBody">
-                                <tr>
-                                    <td class="w-64 border-gray-300 border-r">
-                                        <span class="flex items-center col-span-2">
-                                            <input disabled type="text" name="performanceParam[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
-                                        </span>
-                                    </td>
-                                    <td class="border-gray-300 text-center border-r">
-                                        <input disabled type="text" name="setting[]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
-                                    </td>
-                                    <td class="border-gray-300 text-center border-r">
-                                        <input disabled type="number" name="value[0][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
-                                    </td>
-                                    <td class="border-gray-300 text-center border-r">
-                                        <input disabled type="number" name="value[1][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
-                                    </td>
-                                    <td class="border-gray-300 text-center border-r">
-                                        <input disabled type="text" name="reference[]" class="w-20 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
-                                    </td>
-                                    <td>
-                                        <label class="custom-label flex ml-3">
-                                            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="performanceCondition[0]" value="1" class="hidden">
-                                                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
-                                            </div>
-                                        </label>
-                                    </td>
-                                    <td>
-                                        <label class="custom-label flex ml-3">
-                                            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="performanceCondition[0]" value="0" class="hidden">
-                                                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
-                                            </div>
-                                        </label>
-                                    </td>
-                                    <td class="">
-                                        <a onclick="deleteRow(this)" class="text-red-500 hover:text-gray-500 cursor-pointer mx-1">
-                                            <i class="fas fa-minus-circle"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                @isset($raw->performanceParam)
+                                    @foreach ($raw->performanceParam as $i => $p)
+                                    <tr>
+                                        <td class="w-64 border-gray-300 border-r">
+                                            <span class="flex items-center col-span-2">
+                                                <input type="text" name="performanceParam[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"
+                                                value="{{ $p }}">
+                                            </span>
+                                        </td>
+                                        <td class="border-gray-300 text-center border-r">
+                                            <input type="text" name="setting[]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"
+                                            value="{{ $raw->setting[$i] }}">
+                                        </td>
+                                        <td class="border-gray-300 text-center border-r">
+                                            <input type="number" name="value[0][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"
+                                            value="{{ $raw->value[0][$i] }}">
+                                        </td>
+                                        <td class="border-gray-300 text-center border-r">
+                                            <input type="number" name="value[1][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"
+                                            value="{{ $raw->value[1][$i] }}">
+                                        </td>
+                                        <td class="border-gray-300 text-center border-r">
+                                            <input type="text" name="reference[]" class="w-20 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"
+                                            value="{{ $raw->reference[$i] }}">
+                                        </td>
+                                        <td>
+                                            <label class="custom-label flex ml-3">
+                                                <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                                                    <input type="radio" name="performanceCondition[0]" value="1" class="hidden"
+                                                    @if ($raw->performanceCondition[$i] == "1")
+                                                        checked
+                                                    @endif>
+                                                    <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
+                                                </div>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="custom-label flex ml-3">
+                                                <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                                                    <input type="radio" name="performanceCondition[0]" value="0" class="hidden"
+                                                    @if ($raw->performanceCondition[$i] == "0")
+                                                        checked
+                                                    @endif>
+                                                    <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
+                                                </div>
+                                            </label>
+                                        </td>
+                                        <td class="">
+                                            <a onclick="deleteRow(this)" class="text-red-500 hover:text-gray-500 cursor-pointer mx-1">
+                                                <i class="fas fa-minus-circle"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                @endisset
                             </tbody>
                         </table>
                     </div>
@@ -867,14 +1048,14 @@
                                         </span>
                                     </td>
                                     <td class="border-gray-300 text-center border-r">
-                                        <input disabled type="text" name="batterySetting[]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input type="text" name="batterySetting[]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ $raw->batterySetting[0] }}">
                                         VDC
                                     </td>
                                     <td class="border-gray-300 text-center border-r">
-                                        <input disabled type="number" name="battery[0][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input type="number" name="battery[0][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ $raw->battery[0][0] }}">
                                     </td>
                                     <td class="border-gray-300 text-center border-r">
-                                        <input disabled type="number" name="battery[1][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input type="number" name="battery[1][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ $raw->battery[1][0] }}">
                                     </td>
                                     <td class="border-gray-300 text-center border-r">
                                         <div class="text-center w-20">
@@ -884,7 +1065,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="batteryCondition[0]" value="1" class="hidden">
+                                                <input type="radio" name="batteryCondition[0]" value="1" class="hidden"
+                                                @if ($raw->batteryCondition[0] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -892,7 +1076,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="batteryCondition[0]" value="0" class="hidden">
+                                                <input type="radio" name="batteryCondition[0]" value="0" class="hidden"
+                                                @if ($raw->batteryCondition[0] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -913,7 +1100,10 @@
                         <span class="flex items-center text-center mx-4">
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-4 h-4 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="inspectionResult" value="1" class="hidden">
+                                    <input type="radio" name="inspectionResult" value="1" class="hidden"
+                                    @if (isset($raw->inspectionResult) && $raw->inspectionResult == "1")
+                                        checked
+                                    @endif>
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
@@ -922,7 +1112,10 @@
                         <span class="flex items-center text-center ml-8">
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-4 h-4 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="inspectionResult" value="0" class="hidden">
+                                    <input type="radio" name="inspectionResult" value="0" class="hidden"
+                                    @if (isset($raw->inspectionResult) && $raw->inspectionResult == "0")
+                                        checked
+                                    @endif>
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
@@ -955,7 +1148,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="maintenance[0]" value="1" class="hidden">
+                                                <input type="radio" name="maintenance[0]" value="1" class="hidden"
+                                                @if ($raw->maintenance[0] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -963,7 +1159,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="maintenance[0]" value="0" class="hidden">
+                                                <input type="radio" name="maintenance[0]" value="0" class="hidden"
+                                                @if ($raw->maintenance[0] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -976,7 +1175,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="maintenance[1]" value="1" class="hidden">
+                                                <input type="radio" name="maintenance[1]" value="1" class="hidden"
+                                                @if ($raw->maintenance[1] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -984,7 +1186,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="maintenance[1]" value="0" class="hidden">
+                                                <input type="radio" name="maintenance[1]" value="0" class="hidden"
+                                                @if ($raw->maintenance[1] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -997,7 +1202,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="maintenance[2]" value="1" class="hidden">
+                                                <input type="radio" name="maintenance[2]" value="1" class="hidden"
+                                                @if ($raw->maintenance[2] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1005,7 +1213,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="maintenance[2]" value="0" class="hidden">
+                                                <input type="radio" name="maintenance[2]" value="0" class="hidden"
+                                                @if ($raw->maintenance[2] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1018,7 +1229,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="maintenance[3]" value="1" class="hidden">
+                                                <input type="radio" name="maintenance[3]" value="1" class="hidden"
+                                                @if ($raw->maintenance[3] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1026,7 +1240,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="maintenance[3]" value="0" class="hidden">
+                                                <input type="radio" name="maintenance[3]" value="0" class="hidden"
+                                                @if ($raw->maintenance[3] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1035,12 +1252,16 @@
                                 <tr>
                                     <td class="flex w-64">
                                         <p class="flex items-center col-span-2">Penggantian Consumable</p>
-                                        <input disabled type="text" name="cons" class="text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input disabled type="text" name="cons" class="text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"
+                                        value="{{ $raw->cons }}">
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="maintenance[4]" value="1" class="hidden">
+                                                <input type="radio" name="maintenance[4]" value="1" class="hidden"
+                                                @if ($raw->maintenance[4] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1048,7 +1269,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="maintenance[4]" value="0" class="hidden">
+                                                <input type="radio" name="maintenance[4]" value="0" class="hidden"
+                                                @if ($raw->maintenance[4] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1061,7 +1285,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="maintenance[5]" value="1" class="hidden">
+                                                <input type="radio" name="maintenance[5]" value="1" class="hidden"
+                                                @if ($raw->maintenance[5] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1069,7 +1296,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="maintenance[5]" value="0" class="hidden">
+                                                <input type="radio" name="maintenance[5]" value="0" class="hidden"
+                                                @if ($raw->maintenance[5] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1105,17 +1335,20 @@
                             <tbody id="consBody">
                                 <tr>
                                     <td>
-                                        <input disabled type="text" name="stock[]" class="w-14 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input type="text" name="stock[]" class="w-14 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->stock[0]) ? $raw->stock[0] : ''}}">
                                     </td>
                                     <td class="w-56">
                                         <span class="flex items-center col-span-2">
-                                            <input disabled type="text" name="consumables[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                            <input type="text" name="consumables[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->consumables[0]) ? $raw->consumables[0] : ''}}">
                                         </span>
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[0]" value="0" class="hidden">
+                                                <input type="radio" name="consCondition[0]" value="0" class="hidden"
+                                                @if (isset($raw->consCondition[0]) && $raw->consCondition[0] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1123,7 +1356,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[0]" value="1" class="hidden">
+                                                <input type="radio" name="consCondition[0]" value="1" class="hidden"
+                                                @if (isset($raw->consCondition[0]) && $raw->consCondition[0] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1131,7 +1367,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[0]" value="2" class="hidden">
+                                                <input type="radio" name="consCondition[0]" value="2" class="hidden"
+                                                @if (isset($raw->consCondition[0]) && $raw->consCondition[0] == "2")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1139,17 +1378,20 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input disabled type="text" name="stock[]" class="w-14 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input type="text" name="stock[]" class="w-14 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->stock[1]) ? $raw->stock[1] : ''}}">
                                     </td>
                                     <td class="w-56">
                                         <span class="flex items-center col-span-2">
-                                            <input disabled type="text" name="consumables[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                            <input type="text" name="consumables[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->consumables[1]) ? $raw->consumables[1] : ''}}">
                                         </span>
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[1]" value="0" class="hidden">
+                                                <input type="radio" name="consCondition[1]" value="0" class="hidden"
+                                                @if (isset($raw->consCondition[1]) && $raw->consCondition[1] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1157,7 +1399,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[1]" value="1" class="hidden">
+                                                <input type="radio" name="consCondition[1]" value="1" class="hidden"
+                                                @if (isset($raw->consCondition[1]) && $raw->consCondition[1] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1165,7 +1410,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[1]" value="2" class="hidden">
+                                                <input type="radio" name="consCondition[1]" value="2" class="hidden"
+                                                @if (isset($raw->consCondition[1]) && $raw->consCondition[1] == "2")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1173,17 +1421,20 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input disabled type="text" name="stock[]" class="w-14 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input type="text" name="stock[]" class="w-14 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->stock[2]) ? $raw->stock[2] : ''}}">
                                     </td>
                                     <td class="w-56">
                                         <span class="flex items-center col-span-2">
-                                            <input disabled type="text" name="consumables[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                            <input type="text" name="consumables[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->consumables[2]) ? $raw->consumables[2] : ''}}">
                                         </span>
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[2]" value="0" class="hidden">
+                                                <input type="radio" name="consCondition[2]" value="0" class="hidden"
+                                                @if (isset($raw->consCondition[2]) && $raw->consCondition[2] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1191,7 +1442,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[2]" value="1" class="hidden">
+                                                <input type="radio" name="consCondition[2]" value="1" class="hidden"
+                                                @if (isset($raw->consCondition[2]) && $raw->consCondition[2] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1199,7 +1453,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[2]" value="2" class="hidden">
+                                                <input type="radio" name="consCondition[2]" value="2" class="hidden"
+                                                @if (isset($raw->consCondition[2]) && $raw->consCondition[2] == "2")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1207,17 +1464,20 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input disabled type="text" name="stock[]" class="w-14 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input type="text" name="stock[]" class="w-14 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->stock[3]) ? $raw->stock[3] : ''}}">
                                     </td>
                                     <td class="w-56">
                                         <span class="flex items-center col-span-2">
-                                            <input disabled type="text" name="consumables[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                            <input type="text" name="consumables[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->consumables[3]) ? $raw->consumables[3] : ''}}">
                                         </span>
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[3]" value="0" class="hidden">
+                                                <input type="radio" name="consCondition[3]" value="0" class="hidden"
+                                                @if (isset($raw->consCondition[3]) && $raw->consCondition[3] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1225,7 +1485,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[3]" value="1" class="hidden">
+                                                <input type="radio" name="consCondition[3]" value="1" class="hidden"
+                                                @if (isset($raw->consCondition[3]) && $raw->consCondition[3] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1233,7 +1496,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[3]" value="2" class="hidden">
+                                                <input type="radio" name="consCondition[3]" value="2" class="hidden"
+                                                @if (isset($raw->consCondition[3]) && $raw->consCondition[3] == "2")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1241,17 +1507,20 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input disabled type="text" name="stock[]" class="w-14 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input type="text" name="stock[]" class="w-14 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->stock[4]) ? $raw->stock[4] : ''}}">
                                     </td>
                                     <td class="w-56">
                                         <span class="flex items-center col-span-2">
-                                            <input disabled type="text" name="consumables[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                            <input type="text" name="consumables[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->consumables[4]) ? $raw->consumables[4] : ''}}">
                                         </span>
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[4]" value="0" class="hidden">
+                                                <input type="radio" name="consCondition[4]" value="0" class="hidden"
+                                                @if (isset($raw->consCondition[4]) && $raw->consCondition[4] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1259,7 +1528,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[4]" value="1" class="hidden">
+                                                <input type="radio" name="consCondition[4]" value="1" class="hidden"
+                                                @if (isset($raw->consCondition[4]) && $raw->consCondition[4] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1267,7 +1539,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[4]" value="2" class="hidden">
+                                                <input type="radio" name="consCondition[4]" value="2" class="hidden"
+                                                @if (isset($raw->consCondition[4]) && $raw->consCondition[4] == "2")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1275,17 +1550,20 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input disabled type="text" name="stock[]" class="w-14 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input type="text" name="stock[]" class="w-14 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->stock[5]) ? $raw->stock[5] : ''}}">
                                     </td>
                                     <td class="w-56">
                                         <span class="flex items-center col-span-2">
-                                            <input disabled type="text" name="consumables[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                            <input type="text" name="consumables[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->consumables[5]) ? $raw->consumables[5] : ''}}">
                                         </span>
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[5]" value="0" class="hidden">
+                                                <input type="radio" name="consCondition[5]" value="0" class="hidden"
+                                                @if (isset($raw->consCondition[5]) && $raw->consCondition[5] == "0")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1293,7 +1571,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[5]" value="1" class="hidden">
+                                                <input type="radio" name="consCondition[5]" value="1" class="hidden"
+                                                @if (isset($raw->consCondition[5]) && $raw->consCondition[5] == "1")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1301,7 +1582,10 @@
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                                                <input type="radio" name="consCondition[5]" value="2" class="hidden">
+                                                <input type="radio" name="consCondition[5]" value="2" class="hidden"
+                                                @if (isset($raw->consCondition[5]) && $raw->consCondition[5] == "2")
+                                                    checked
+                                                @endif>
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -1320,7 +1604,10 @@
                         <span class="flex items-center text-center mx-4">
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-4 h-4 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="maintenanceResult" value="1" class="hidden">
+                                    <input type="radio" name="maintenanceResult" value="1" class="hidden"
+                                    @if ($raw->maintenanceResult == "1")
+                                        checked
+                                    @endif>
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
@@ -1329,7 +1616,10 @@
                         <span class="flex items-center text-center ml-8">
                             <label class="custom-label flex ml-3">
                                 <div class="bg-white shadow w-4 h-4 p-1 flex justify-center items-center mr-2">
-                                    <input type="radio" name="maintenanceResult" value="0" class="hidden">
+                                    <input type="radio" name="maintenanceResult" value="0" class="hidden"
+                                    @if ($raw->maintenanceResult == "0")
+                                        checked
+                                    @endif>
                                     <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                 </div>
                             </label>
@@ -1347,7 +1637,10 @@
                             <span class="flex items-center text-center my-1">
                                 <label class="custom-label flex ml-3">
                                     <div class="bg-white shadow w-4 h-4 p-1 flex justify-center items-center mr-2">
-                                        <input type="radio" name="recommendation" value="0" class="hidden">
+                                        <input type="radio" name="recommendation" value="0" class="hidden"
+                                        @if ($raw->recommendation == "0")
+                                            checked
+                                        @endif>
                                         <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                     </div>
                                 </label>
@@ -1356,7 +1649,10 @@
                             <span class="flex items-center text-center my-1">
                                 <label class="custom-label flex ml-3">
                                     <div class="bg-white shadow w-4 h-4 p-1 flex justify-center items-center mr-2">
-                                        <input type="radio" name="recommendation" value="1" class="hidden">
+                                        <input type="radio" name="recommendation" value="1" class="hidden"
+                                        @if ($raw->recommendation == "1")
+                                            checked
+                                        @endif>
                                         <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                     </div>
                                 </label>
@@ -1367,7 +1663,10 @@
                             <span class="flex items-center text-center my-1">
                                 <label class="custom-label flex ml-3">
                                     <div class="bg-white shadow w-4 h-4 p-1 flex justify-center items-center mr-2">
-                                        <input type="radio" name="recommendation" value="2" class="hidden">
+                                        <input type="radio" name="recommendation" value="2" class="hidden"
+                                        @if ($raw->recommendation == "2")
+                                            checked
+                                        @endif>
                                         <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                     </div>
                                 </label>
@@ -1376,7 +1675,10 @@
                             <span class="flex items-center text-center my-1">
                                 <label class="custom-label flex ml-3">
                                     <div class="bg-white shadow w-4 h-4 p-1 flex justify-center items-center mr-2">
-                                        <input type="radio" name="recommendation" value="3" class="hidden">
+                                        <input type="radio" name="recommendation" value="3" class="hidden"
+                                        @if ($raw->recommendation == "3")
+                                            checked
+                                        @endif>
                                         <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                     </div>
                                 </label>
@@ -1393,7 +1695,7 @@
                         </span>
                     </div>
                     <div class="w-full flex justify-center">
-                        <textarea rows="15" name="notes" class="w-full my-1 text-xs shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"></textarea>
+                        <textarea rows="15" name="notes" class="w-full my-1 text-xs shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600">{{ $raw->notes }}</textarea>
                     </div>
                 </div>
 
@@ -1436,6 +1738,11 @@
 </main>
 
 <script>
+    $(document).ready(function(){
+        $('input[name="is_el[]"]').each(function(k, v) {
+            if ($(this).data('el') == 'checked') $(this).click();
+        });
+    })
     function toggleInput(el) {
         let key = null
 

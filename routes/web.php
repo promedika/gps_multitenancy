@@ -127,6 +127,7 @@ if (Tenant::current()) {
                     Route::get('/edit/{maintenance}', [MaintenanceController::class, 'edit'])->name('maintenance.edit');
                     Route::post('/update/{maintenance}', [MaintenanceController::class, 'update'])->name('maintenance.update');
                     Route::get('/delete/{maintenance}', [MaintenanceController::class, 'destroy'])->name('maintenance.delete');
+                    Route::get('/show/{maintenance}', [MaintenanceController::class, 'show'])->name('maintenance.show');
                 });
 
                 Route::prefix('asset')->group(function () {

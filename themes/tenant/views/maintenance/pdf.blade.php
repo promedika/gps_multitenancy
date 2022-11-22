@@ -100,19 +100,34 @@
                                 <tr>
                                     <td style="width: 154px;">S / N</td>
                                     <td style="width: 206px;">
-                                        : {{ $maintenance->inventory->identity->serial }}
+                                        : 
+                                        @if ($maintenance->inventory->identity->serial)
+                                            {{ $maintenance->inventory->identity->serial }}
+                                        @else
+                                            -
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 154px;">Nomor Kalibrasi</td>
                                     <td style="width: 206px;">
-                                        : {{ $maintenance->inventory->latest_record->label }}
+                                        : 
+                                        @if ($maintenance->inventory->latest_record->label)
+                                            {{ $maintenance->inventory->latest_record->label }}
+                                        @else
+                                            -
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 154px;">Tanggal Kalibrasi</td>
                                     <td style="width: 206px;">
-                                        : {{ $maintenance->inventory->latest_record->cal_date }}
+                                        : 
+                                        @if ($maintenance->inventory->latest_record->cal_date)
+                                            {{ date('d-m-Y', strtotime($maintenance->inventory->latest_record->cal_date)) }}
+                                        @else
+                                            -
+                                        @endif
                                     </td>
                                 </tr>
                             </tbody>
@@ -150,10 +165,10 @@
                                     <td>: {{ $raw->voltage }} V</td>
                                     <td>UPS</td>
                                     <td>
-                                        @isset($raw->ups)
+                                        @isset($raw->is_ups)
                                             : {{ $raw->ups }} V
                                         @endisset
-                                        @empty($raw->ups)
+                                        @empty($raw->is_ups)
                                             : -
                                         @endempty
                                     </td>
@@ -191,7 +206,7 @@
                                     <td>1. </td>
                                     <td>ESA</td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if ($raw->is_tools[0] == "on")
+                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[0]) && $raw->is_tools[0] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -200,7 +215,7 @@
                                         {{ $raw->tools[0] }}
                                     </td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if ($raw->is_tools[1] == "on")
+                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[1]) && $raw->is_tools[1] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -209,7 +224,7 @@
                                     <td>2. </td>
                                     <td>Thermohygrometer</td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if ($raw->is_tools[2] == "on")
+                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[2]) && $raw->is_tools[2] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -218,7 +233,7 @@
                                         {{ $raw->tools[1] }}
                                     </td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if ($raw->is_tools[3] == "on")
+                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[3]) && $raw->is_tools[3] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -227,7 +242,7 @@
                                     <td>3. </td>
                                     <td>Toolset</td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if ($raw->is_tools[4] == "on")
+                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[4]) && $raw->is_tools[4] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -236,7 +251,7 @@
                                         {{ $raw->tools[2] }}
                                     </td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if ($raw->is_tools[5] == "on")
+                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[5]) && $raw->is_tools[5] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -245,7 +260,7 @@
                                     <td>4. </td>
                                     <td>Cleaning Kit</td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if ($raw->is_tools[6] == "on")
+                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[6]) && $raw->is_tools[6] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -254,7 +269,7 @@
                                         {{ $raw->tools[3] }}
                                     </td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if ($raw->is_tools[7] == "on")
+                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[7]) && $raw->is_tools[7] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -263,7 +278,7 @@
                                     <td>5. </td>
                                     <td>Multitester</td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if ($raw->is_tools[8] == "on")
+                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[8]) && $raw->is_tools[8] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -272,7 +287,7 @@
                                         {{ $raw->tools[4] }}
                                     </td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if ($raw->is_tools[9] == "on")
+                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[9]) && $raw->is_tools[9] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -622,9 +637,9 @@
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" 
-                                        @if (!in_array('el2', $raw->is_el))
-                                            checked
-                                        @endif>
+                                            @if (!in_array('el2', $raw->is_el))
+                                                checked
+                                            @endif>
                                         N/A
                                     </td>
                                 </tr>
@@ -865,14 +880,14 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->inspectionResult == "1")
+                                        @if (isset($raw->inspectionResult) && $raw->inspectionResult == "1")
                                             checked
                                         @endif>
                                         Alat Bekerja dengan Baik
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->inspectionResult == "0")
+                                        @if (isset($raw->inspectionResult) && $raw->inspectionResult == "0")
                                             checked
                                         @endif>
                                         Alat Tidak Bekerja dengan Baik
@@ -1153,13 +1168,13 @@
                                         </div>
                                     </td>
                                     <td style="text-align: center; font-weight: 600;">
-                                        <img style="width: 200px; height: 100px;" src="{{ asset('stamp_approved.png') }}" alt="">
+                                        <img style="width: 200px; height: 100px;" src="{{ public_path('stamp_none.png') }}" alt="">
                                         <div>
                                             {{ $maintenance->user->name }}
                                         </div>
                                     </td>
                                     <td style="text-align: center; font-weight: 600;">
-                                        <img style="width: 200px; height: 100px;" src="{{ asset('stamp_rejected.png') }}" alt="">
+                                        <img style="width: 200px; height: 100px;" src="{{ public_path('stamp_none.png') }}" alt="">
                                         <div>
                                             {{ $maintenance->user->name }}
                                         </div>

@@ -407,11 +407,13 @@
                                                 </a>
                                             </div>
                                             @if (Auth::user()->role < 2)
+                                                {{--
                                                 <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                                     <a href="{{ route('maintenance.edit', ['maintenance' => $m->id]) }}">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                 </div>
+                                                --}}
                                             @endif
                                             @if (Auth::user()->role < 1)
                                                 <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">

@@ -58,7 +58,7 @@
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex item-center justify-center">
                                             <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                                <a href="{{ route('inventory.show', ['id' => $m->inventory_id]) }}">
+                                                <a href="{{ route('maintenance.show', ['maintenance' => $m->id]) }}">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </div>
@@ -68,11 +68,13 @@
                                                 </a>
                                             </div>
                                             @if (Auth::user()->role < 2)
+                                                {{--
                                                 <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                                     <a href="{{ route('maintenance.edit', ['maintenance' => $m->id]) }}">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                 </div>
+                                                --}}
                                             @endif
                                             @if (Auth::user()->role < 1)
                                                 <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
