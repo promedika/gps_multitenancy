@@ -19,7 +19,7 @@ class MaintenanceController extends Controller
      */
     public function index()
     {
-        $maintenances = Maintenance::with('inventory', 'inventory.device')->get();
+        $maintenances = Maintenance::with('inventory', 'inventory.device')->where('is_approved_spv','!=',3)->get();
 
         return view('maintenance.index', ['maintenances' => $maintenances]);
     }
@@ -71,6 +71,10 @@ class MaintenanceController extends Controller
      */
     public function show(Maintenance $maintenance)
     {
+        if ($maintenance->is_approved_spv == 3) {
+            return redirect()->route('maintenance.index')->with('success', 'Data Has Been Deleted');
+        }
+
         $raw = json_decode($maintenance->raw);
         // dd($maintenance,$raw);
         return view('maintenance.show', [
@@ -88,9 +92,8 @@ class MaintenanceController extends Controller
      */
     public function edit(Maintenance $maintenance)
     {
-        // dd($maintenance);
         $raw = json_decode($maintenance->raw);
-        // dd($maintenance,$raw);
+        
         return view('maintenance.edit', [
             'maintenance' => $maintenance, 
             'inventories' => Inventory::all(),
@@ -133,7 +136,9 @@ class MaintenanceController extends Controller
      */
     public function destroy(Maintenance $maintenance)
     {
-        $maintenance->delete();
+        $maintenance->is_approved_spv = 3;
+        $maintenance->update();
+        // $maintenance->delete();
 
         return redirect()->route('maintenance.index')->with('success', 'Entr Deleted');
     }
@@ -141,8 +146,12 @@ class MaintenanceController extends Controller
     public function pdf(Maintenance $maintenance)
     {
         ini_set('max_execution_time', 0);
+
+        if ($maintenance->is_approved_spv == 3) {
+            return redirect()->route('maintenance.index')->with('success', 'Data Has Been Deleted');
+        }
+
         $raw = json_decode($maintenance->raw);
-        // dd($maintenance,$raw);
         $pdf = PDF::loadView('maintenance.pdf', ['maintenance' => $maintenance, 'raw' => $raw]);
 
         return $pdf->stream('ipm_form'.strtotime(date('Y-m-d H:i:s')).'.pdf');
