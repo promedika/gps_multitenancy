@@ -560,11 +560,11 @@
                                 </td>
                                 <td class="form-check">
                                     <input disabled onclick="toggleInput(this)" id="el1" name="is_el[]" value="el1" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault" 
-                                    data-el="@php echo (!in_array('el1', $raw->is_el)) ? 'checked' : ''; @endphp"
+                                    @php echo (!in_array('el1', $raw->is_el)) ? 'checked' : ''; @endphp
                                     >
                                 </td>
                                 <td class="flex justify-start pl-2">
-                                    <p id="el1Node" class="hidden items-center col-span-2">
+                                    <p id="el1Node" class="@php echo (!in_array('el1', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
                                         <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"
                                         value="{{ isset($raw->el[0]) && $raw->el[0] }}"> 
                                         &nbsp;&#8804;0,2&#8486;&nbsp;&nbsp;&nbsp;
@@ -577,11 +577,11 @@
                                 </td>
                                 <td>
                                     <input disabled onclick="toggleInput(this)" id="el2" name="is_el[]" value="el2" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault" 
-                                    data-el="@php echo (!in_array('el2', $raw->is_el)) ? 'checked' : ''; @endphp"
+                                    @php echo (!in_array('el2', $raw->is_el)) ? 'checked' : ''; @endphp
                                     >
                                 </td>
                                 <td class="flex justify-start pl-2">
-                                    <p id="el2Node" class="hidden items-center col-span-2">
+                                    <p id="el2Node" class="@php echo (!in_array('el2', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
                                         <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"
                                         value="{{ isset($raw->el[1]) && $raw->el[1] }}"> 
                                         &nbsp;&#8804;100&#xb5;A
@@ -594,11 +594,11 @@
                                 </td>
                                 <td>
                                     <input disabled onclick="toggleInput(this)" id="el3" name="is_el[]" value="el3" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault"
-                                    data-el="@php echo (!in_array('el3', $raw->is_el)) ? 'checked' : ''; @endphp"
+                                    @php echo (!in_array('el3', $raw->is_el)) ? 'checked' : ''; @endphp
                                     >
                                 </td>
                                 <td class="flex justify-start pl-2">
-                                    <p id="el3Node" class="hidden items-center col-span-2">
+                                    <p id="el3Node" class="@php echo (!in_array('el3', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
                                         <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->el[2]) && $raw->el[2] }}"> 
                                         &nbsp;&#8804;500&#xb5;A
                                     </p>
@@ -610,11 +610,11 @@
                                 </td>
                                 <td>
                                     <input disabled onclick="toggleInput(this)" id="el4" name="is_el[]" value="el4" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault"
-                                    data-el="@php echo (!in_array('el4', $raw->is_el)) ? 'checked' : ''; @endphp"
+                                    @php echo (!in_array('el4', $raw->is_el)) ? 'checked' : ''; @endphp
                                     >
                                 </td>
                                 <td class="flex justify-start pl-2">
-                                    <p id="el4Node" class="hidden items-center col-span-2">
+                                    <p id="el4Node" class="@php echo (!in_array('el4', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
                                         <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->el[3]) && $raw->el[3] }}"> 
                                         &nbsp;&#8804;100&#xb5;A
                                     </p>
@@ -626,11 +626,11 @@
                                 </td>
                                 <td>
                                     <input disabled onclick="toggleInput(this)" id="el5" name="is_el[]" value="el5" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault" 
-                                    data-el="@php echo (!in_array('el5', $raw->is_el)) ? 'checked' : ''; @endphp"
+                                    @php echo (!in_array('el5', $raw->is_el)) ? 'checked' : ''; @endphp
                                     >
                                 </td>
                                 <td class="flex justify-start pl-2">
-                                    <p id="el5Node" class="hidden items-center col-span-2">
+                                    <p id="el5Node" class="@php echo (!in_array('el5', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
                                         <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->el[4]) && $raw->el[4] }}"> 
                                         &nbsp;&#8804;500&#xb5;A
                                     </p>
@@ -644,11 +644,11 @@
                                         </td>
                                         <td>
                                             <input disabled onclick="toggleInput(this)" id="el{{count($raw->el) + $i}}" name="is_el[]" value="el{{count($raw->el) + $i}}" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault" 
-                                            data-el="@php echo (!in_array('el'.count($raw->el) + $i, $raw->is_el)) ? 'checked' : ''; @endphp"
+                                            @php echo (!in_array('el'.count($raw->el) + $i, $raw->is_el)) ? 'checked' : ''; @endphp
                                             >
                                         </td>
                                         <td class="flex justify-start pl-2">
-                                            <p id="el{{count($raw->el) + $i}}Node" class="hidden items-center col-span-2">
+                                            <p id="el{{count($raw->el) + $i}}Node" class="@php echo (!in_array('el'.count($raw->el) + $i, $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
                                                 <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->el[count($raw->el) + $i]) && $raw->el[count($raw->el) + $i] }}"> 
                                                 &nbsp;&#8804;500&#xb5;A
                                             </p>
