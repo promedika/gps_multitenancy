@@ -148,11 +148,11 @@
                             <tbody>
                                 <tr>
                                     <td>Suhu</td>
-                                    <td>: {{ $raw->temperature }} °C ( 21 - 25 )</td>
+                                    <td>: {{ isset($raw->temperature) ? $raw->temperature : '' }} °C ( 21 - 25 )</td>
                                 </tr>
                                 <tr>
                                     <td>Kelembaban</td>
-                                    <td>: {{ $raw->humidity }} % ( 50 - 60 ))</td>
+                                    <td>: {{ isset($raw->humidity) ? $raw->humidity : '' }} % ( 50 - 60 ))</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -162,11 +162,11 @@
                             <tbody>
                                 <tr>
                                     <td>Tegangan Jala - Jala</td>
-                                    <td>: {{ $raw->voltage }} V</td>
+                                    <td>: {{ isset($raw->voltage) ? $raw->voltage : '' }} V</td>
                                     <td>UPS</td>
                                     <td>
                                         @isset($raw->is_ups)
-                                            : {{ $raw->ups }} V
+                                            : {{ isset($raw->ups) ? $raw->ups : '' }} V
                                         @endisset
                                         @empty($raw->is_ups)
                                             : -
@@ -179,7 +179,7 @@
                                     <td>Stabilizer</td>
                                     <td>
                                         @isset($raw->is_stabilizer)
-                                            : {{ $raw->stabilizer }} V
+                                            : {{ isset($raw->stabilizer) ? $raw->stabilizer : '' }} V
                                         @endisset
                                         @empty($raw->is_stabilizer)
                                             : -
@@ -212,7 +212,7 @@
                                     </td>
                                     <td>6.<td>
                                     <td>
-                                        {{ $raw->tools[0] }}
+                                        {{ isset($raw->tools[0]) ? $raw->tools[0] : '' }}
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[1]) && $raw->is_tools[1] == "on")
@@ -230,7 +230,7 @@
                                     </td>
                                     <td>7.<td>
                                     <td>
-                                        {{ $raw->tools[1] }}
+                                        {{ isset($raw->tools[1]) ? $raw->tools[1] : '' }}
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[3]) && $raw->is_tools[3] == "on")
@@ -248,7 +248,7 @@
                                     </td>
                                     <td>8.<td>
                                     <td>
-                                        {{ $raw->tools[2] }}
+                                        {{ isset($raw->tools[2]) ? $raw->tools[2] : '' }}
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[5]) && $raw->is_tools[5] == "on")
@@ -266,7 +266,7 @@
                                     </td>
                                     <td>9.<td>
                                     <td>
-                                        {{ $raw->tools[3] }}
+                                        {{ isset($raw->tools[3]) ? $raw->tools[3] : '' }}
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[7]) && $raw->is_tools[7] == "on")
@@ -284,7 +284,7 @@
                                     </td>
                                     <td>10.<td>
                                     <td>
-                                        {{ $raw->tools[4] }}
+                                        {{ isset($raw->tools[4]) ? $raw->tools[4] : '' }}
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[9]) && $raw->is_tools[9] == "on")
@@ -302,21 +302,21 @@
                                     <td>Penempatan Alat : </td>
                                     <td>
                                         <input disabled type="checkbox" 
-                                        @if ($raw->placement == "good")
+                                        @if (isset($raw->placement) && $raw->placement == "good")
                                             checked
                                         @endif>
                                         Baik
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" 
-                                        @if ($raw->placement == "bad")
+                                        @if (isset($raw->placement) && $raw->placement == "bad")
                                             checked
                                         @endif>
                                         Buruk
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" 
-                                        @if ($raw->placement == "none")
+                                        @if (isset($raw->placement) && $raw->placement == "none")
                                             checked
                                         @endif>
                                         N/A
@@ -326,21 +326,21 @@
                                     <td>Roda / Troli / Bracket : </td>
                                     <td>
                                         <input disabled type="checkbox" 
-                                        @if ($raw->extra == "good")
+                                        @if (isset($raw->extra) && $raw->extra == "good")
                                             checked
                                         @endif>
                                         Baik
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" 
-                                        @if ($raw->extra == "bad")
+                                        @if (isset($raw->extra) && $raw->extra == "bad")
                                             checked
                                         @endif>
                                         Buruk
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" 
-                                        @if ($raw->extra == "none")
+                                        @if (isset($raw->extra) && $raw->extra == "none")
                                             checked
                                         @endif>
                                         N/A
@@ -370,31 +370,31 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->physic_main == "0")
+                                        @if (isset($raw->physic_main) && $raw->physic_main == "0")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->physic_main == "1")
+                                        @if (isset($raw->physic_main) && $raw->physic_main == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->physic_main == "2")
+                                        @if (isset($raw->physic_main) && $raw->physic_main == "2")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->condition_main == "clean")
+                                        @if (isset($raw->condition_main) && $raw->condition_main == "clean")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->condition_main == "dirty")
+                                        @if (isset($raw->condition_main) && $raw->condition_main == "dirty")
                                             checked
                                         @endif>
                                     </td>
@@ -405,31 +405,31 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->physic_extra == "0")
+                                        @if (isset($raw->physic_extra) && $raw->physic_extra == "0")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->physic_extra == "1")
+                                        @if (isset($raw->physic_extra) && $raw->physic_extra == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->physic_extra == "2")
+                                        @if (isset($raw->physic_extra) && $raw->physic_extra == "2")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->condition_extra == "clean")
+                                        @if (isset($raw->condition_extra) && $raw->condition_extra == "clean")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->condition_extra == "dirty")
+                                        @if (isset($raw->condition_extra) && $raw->condition_extra == "dirty")
                                             checked
                                         @endif>
                                     </td>
@@ -459,19 +459,19 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[0] == "0")
+                                        @if (isset($raw->func[0]) && $raw->func[0] == "0")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[0] == "1")
+                                        @if (isset($raw->func[0]) && $raw->func[0] == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[0] == "2")
+                                        @if (isset($raw->func[0]) && $raw->func[0] == "2")
                                             checked
                                         @endif>
                                     </td>
@@ -482,19 +482,19 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[1] == "0")
+                                        @if (isset($raw->func[1]) && $raw->func[1] == "0")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[1] == "1")
+                                        @if (isset($raw->func[1]) && $raw->func[1] == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[1] == "2")
+                                        @if (isset($raw->func[1]) && $raw->func[1] == "2")
                                             checked
                                         @endif>
                                     </td>
@@ -505,19 +505,19 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[2] == "0")
+                                        @if (isset($raw->func[2]) && $raw->func[2] == "0")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[2] == "1")
+                                        @if (isset($raw->func[2]) && $raw->func[2] == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[2] == "2")
+                                        @if (isset($raw->func[2]) && $raw->func[2] == "2")
                                             checked
                                         @endif>
                                     </td>
@@ -528,19 +528,19 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[3] == "0")
+                                        @if (isset($raw->func[3]) && $raw->func[3] == "0")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[3] == "1")
+                                        @if (isset($raw->func[3]) && $raw->func[3] == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[3] == "2")
+                                        @if (isset($raw->func[3]) && $raw->func[3] == "2")
                                             checked
                                         @endif>
                                     </td>
@@ -551,19 +551,19 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[4] == "0")
+                                        @if (isset($raw->func[4]) && $raw->func[4] == "0")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[4] == "1")
+                                        @if (isset($raw->func[4]) && $raw->func[4] == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->func[4] == "2")
+                                        @if (isset($raw->func[4]) && $raw->func[4] == "2")
                                             checked
                                         @endif>
                                     </td>
@@ -608,7 +608,7 @@
                                         <span style="text-align: left;">Tahanan hubungan pertanahan</span>
                                     </td>
                                     <td>
-                                        {{ $raw->el[0] }}
+                                        {{ isset($raw->el[0]) && $raw->el[0] }}
                                     </td>
                                     <td>
                                         <p>
@@ -628,7 +628,7 @@
                                         <span style="text-align: left;">Arus bocor Casis dengan Pembumian</span>
                                     </td>
                                     <td>
-                                        {{ $raw->el[1] }}
+                                        {{ isset($raw->el[1]) && $raw->el[1] }}
                                     </td>
                                     <td>
                                         <p>
@@ -648,7 +648,7 @@
                                         <span style="text-align: left;">Arus bocor Casis tanpa Pembumian</span>
                                     </td>
                                     <td>
-                                        {{ $raw->el[2] }}
+                                        {{ isset($raw->el[2]) && $raw->el[2] }}
                                     </td>
                                     <td>
                                         <p>
@@ -668,7 +668,7 @@
                                         <span style="text-align: left;">Arus bocor Casis Polaritas terbalik dengan Pembumian</span>
                                     </td>
                                     <td>
-                                        {{ $raw->el[3] }}
+                                        {{ isset($raw->el[3]) && $raw->el[3] }}
                                     </td>
                                     <td>
                                         <p>
@@ -688,7 +688,7 @@
                                         <span style="text-align: left;">Arus bocor Casis Polaritas terbalik tanpa Pembumian</span>
                                     </td>
                                     <td>
-                                        {{ $raw->el[4] }}
+                                        {{ isset($raw->el[4]) && $raw->el[4] }}
                                     </td>
                                     <td>
                                         <p>
@@ -742,19 +742,19 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->complete[0] == "0")
+                                        @if (isset($raw->complete[0]) && $raw->complete[0] == "0")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->complete[0] == "1")
+                                        @if (isset($raw->complete[0]) && $raw->complete[0] == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->complete[0] == "2")
+                                        @if (isset($raw->complete[0]) && $raw->complete[0] == "2")
                                             checked
                                         @endif>
                                     </td>
@@ -767,19 +767,19 @@
                                             </td>
                                             <td style="text-align: center;">
                                                 <input disabled type="checkbox" 
-                                                @if ($raw->complete[4 + $i] == "0")
+                                                @if ($raw->complete[0 + $i] == "0")
                                                     checked
                                                 @endif>
                                             </td>
                                             <td style="text-align: center;">
                                                 <input disabled type="checkbox" 
-                                                @if ($raw->complete[4 + $i] == "1")
+                                                @if ($raw->complete[0 + $i] == "1")
                                                     checked
                                                 @endif>
                                             </td>
                                             <td style="text-align: center;">
                                                 <input disabled type="checkbox" 
-                                                @if ($raw->complete[4 + $i] == "2")
+                                                @if ($raw->complete[0 + $i] == "2")
                                                     checked
                                                 @endif>
                                             </td>
@@ -808,20 +808,20 @@
                                 @isset($raw->performanceParam)
                                     @foreach ($raw->performanceParam as $i => $p)
                                         <tr>
-                                            <td style="text-align: left;" >{{ $p }}</td>
-                                            <td style="text-align: center;" >{{ $raw->setting[$i] }}</td>
-                                            <td style="text-align: center;" >{{ $raw->value[0][$i] }}</td>
-                                            <td style="text-align: center;" >{{ $raw->value[1][$i] }}</td>
-                                            <td style="text-align: center;" >{{ $raw->reference[$i] }}</td>
+                                            <td style="text-align: left;" >{{ isset($p) ? $p : '' }}</td>
+                                            <td style="text-align: center;" >{{ isset($raw->setting[$i]) ? $raw->setting[$i] : '' }}</td>
+                                            <td style="text-align: center;" >{{ isset($raw->value[0][$i]) ? $raw->value[0][$i] : '' }}</td>
+                                            <td style="text-align: center;" >{{ isset($raw->value[1][$i]) ? $raw->value[1][$i] : '' }}</td>
+                                            <td style="text-align: center;" >{{ isset($raw->reference[$i]) ? $raw->reference[$i] : '' }}</td>
                                             <td style="text-align: center;">
                                                 <input disabled type="checkbox" 
-                                                @if ($raw->performanceCondition[$i] == "1")
+                                                @if (isset($raw->performanceCondition[$i]) && $raw->performanceCondition[$i] == "1")
                                                     checked
                                                 @endif>
                                             </td>
                                             <td style="text-align: center;">
                                                 <input disabled type="checkbox" 
-                                                @if ($raw->performanceCondition[$i] == "0")
+                                                @if (isset($raw->performanceCondition[$i]) && $raw->performanceCondition[$i] == "0")
                                                     checked
                                                 @endif>
                                             </td>
@@ -849,13 +849,13 @@
                                 </tr>
                                 <tr>
                                     <td style="text-align: left;" >Battery</td>
-                                    <td style="text-align: center;" >{{ $raw->batterySetting[0] }} VDC</td>
-                                    <td style="text-align: center;" >{{ $raw->battery[0][0] }}</td>
-                                    <td style="text-align: center;" >{{ $raw->battery[1][0] }}</td>
+                                    <td style="text-align: center;" >{{ isset($raw->batterySetting[0]) ? $raw->batterySetting[0] : '' }} VDC</td>
+                                    <td style="text-align: center;" >{{ isset($raw->battery[0][0]) ? $raw->battery[0][0] : '' }}</td>
+                                    <td style="text-align: center;" >{{ isset($raw->battery[1][0]) ? $raw->battery[1][0] : '' }}</td>
                                     <td style="text-align: center;" >&le;10%</td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->batteryCondition[0] == "0")
+                                        @if (isset($raw->batteryCondition[0]) && $raw->batteryCondition[0] == "0")
                                             checked
                                         @endif>
                                     </td>
@@ -914,13 +914,13 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenance[0] == "1")
+                                        @if (isset($raw->maintenance[0]) && $raw->maintenance[0] == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenance[0] == "0")
+                                        @if (isset($raw->maintenance[0]) && $raw->maintenance[0] == "0")
                                             checked
                                         @endif>
                                     </td>
@@ -931,13 +931,13 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenance[1] == "1")
+                                        @if (isset($raw->maintenance[1]) && $raw->maintenance[1] == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenance[1] == "0")
+                                        @if (isset($raw->maintenance[1]) && $raw->maintenance[1] == "0")
                                             checked
                                         @endif>
                                     </td>
@@ -948,13 +948,13 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenance[2] == "1")
+                                        @if (isset($raw->maintenance[2]) && $raw->maintenance[2] == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenance[2] == "0")
+                                        @if (isset($raw->maintenance[2]) && $raw->maintenance[2] == "0")
                                             checked
                                         @endif>
                                     </td>
@@ -965,13 +965,13 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenance[3] == "1")
+                                        @if (isset($raw->maintenance[3]) && $raw->maintenance[3] == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenance[3] == "0")
+                                        @if (isset($raw->maintenance[3]) && $raw->maintenance[3] == "0")
                                             checked
                                         @endif>
                                     </td>
@@ -982,13 +982,13 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenance[4] == "1")
+                                        @if (isset($raw->maintenance[4]) && $raw->maintenance[4] == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenance[4] == "0")
+                                        @if (isset($raw->maintenance[4]) && $raw->maintenance[4] == "0")
                                             checked
                                         @endif>
                                     </td>
@@ -999,13 +999,13 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenance[5] == "1")
+                                        @if (isset($raw->maintenance[5]) && $raw->maintenance[5] == "1")
                                             checked
                                         @endif>
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenance[5] == "0")
+                                        @if (isset($raw->maintenance[5]) && $raw->maintenance[5] == "0")
                                             checked
                                         @endif>
                                     </td>
@@ -1030,23 +1030,23 @@
                                                 {{ $p }}
                                             </td>
                                             <td>
-                                                {{ $raw->consumables[$i] }}
+                                                {{ isset($raw->consumables[$i]) ? $raw->consumables[$i] : '' }}
                                             </td>
                                             <td style="text-align: center;">
                                                 <input disabled type="checkbox" 
-                                                @if ($raw->consCondition[$i] == "0")
+                                                @if (isset($raw->consCondition[$i]) && $raw->consCondition[$i] == "0")
                                                     checked
                                                 @endif>
                                             </td>
                                             <td style="text-align: center;">
                                                 <input disabled type="checkbox" 
-                                                @if ($raw->consCondition[$i] == "1")
+                                                @if (isset($raw->consCondition[$i]) && $raw->consCondition[$i] == "1")
                                                     checked
                                                 @endif>
                                             </td>
                                             <td style="text-align: center;">
                                                 <input disabled type="checkbox" 
-                                                @if ($raw->consCondition[$i] == "2")
+                                                @if (isset($raw->consCondition[$i]) && $raw->consCondition[$i] == "2")
                                                     checked
                                                 @endif>
                                             </td>
@@ -1067,14 +1067,14 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenanceResult == "1")
+                                        @if (isset($raw->maintenanceResult) && $raw->maintenanceResult == "1")
                                             checked
                                         @endif>
                                         Alat Berfungsi dengan Baik
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->maintenanceResult == "0")
+                                        @if (isset($raw->maintenanceResult) && $raw->maintenanceResult == "0")
                                             checked
                                         @endif>
                                         Alat Tidak Dapat Berfungsi dengan Baik
@@ -1094,14 +1094,14 @@
                                     </td>
                                     <td style="text-align: left;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->recommendation == "0")
+                                        @if (isset($raw->recommendation) && $raw->recommendation == "0")
                                             checked
                                         @endif>
                                         Alat Dapat Digunakan
                                     </td>
                                     <td style="text-align: left;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->recommendation == "2")
+                                        @if (isset($raw->recommendation) && $raw->recommendation == "2")
                                             checked
                                         @endif>
                                         Alat Tidak Dapat Digunakan
@@ -1110,14 +1110,14 @@
                                 <tr>
                                     <td style="text-align: left;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->recommendation == "1")
+                                        @if (isset($raw->recommendation) && $raw->recommendation == "1")
                                             checked
                                         @endif>
-                                        Alat Pelru Dikalibrasi
+                                        Alat Perlu Dikalibrasi
                                     </td>
                                     <td style="text-align: left;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->recommendation == "3")
+                                        @if (isset($raw->recommendation) && $raw->recommendation == "3")
                                             checked
                                         @endif>
                                         Alat Harus Dikalibrasi
@@ -1138,7 +1138,7 @@
                                 </tr>
                                 <tr>
                                     <td style="text-align: left;">
-                                        {{ $raw->notes }}
+                                        {{ isset($raw->notes) ? $raw->notes : '' }}
                                     </td>
                                 </tr>
                             </tbody>

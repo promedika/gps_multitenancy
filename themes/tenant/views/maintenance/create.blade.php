@@ -1065,7 +1065,7 @@
                             <td class="w-14 text-center pl-5">
                                 Stok
                             </td>
-                            <td class="w-56 text-center pl-6">
+                            <td class="w-52 text-center pl-6">
                                 Konsumabel
                             </td>
                             <td class="pl-3">
