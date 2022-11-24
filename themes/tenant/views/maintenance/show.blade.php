@@ -119,7 +119,7 @@
                             <input disabled value="{{ isset($raw->voltage) ? $raw->voltage : '' }}" type="number" name="voltage" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                             V
                         </p>
-                        @if ($raw->is_ups)
+                        @if (isset($raw->is_ups) && $raw->is_ups)
                             <span class="flex items-center form-check">
                                 <input disabled checked id="ups" name="is_ups" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
                                 <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
@@ -144,7 +144,7 @@
                         @endif
                     </div>
                     <div class="my-1 grid grid-cols-2 px-2 py-1">
-                        @if ($raw->is_stabilizer)
+                        @if (isset($raw->is_stabilizer) && $raw->is_stabilizer)
                             <span class="flex form-check items-center col-start-2">
                                 <input checked disabled id="stabilizer" name="is_stabilizer" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
                                 <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
