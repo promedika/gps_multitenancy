@@ -87,14 +87,16 @@ class InventoryController extends Controller
             $inventory->device_id = $request->device_id;
             $inventory->identity_id = $request->identity_id;
             $inventory->room_id = $request->room_id;
-            $inventory->price = $request->price;
-            $inventory->year_purchased = $request->year_purchased;
-            $inventory->supplier = $request->supplier;
-            $inventory->penyusutan = $request->penyusutan;
+            $inventory->price = (isset($request->price) && strlen(trim($request->price)) > 0) ? $request->price : '-';
+            $inventory->year_purchased = (isset($request->year_purchased) && strlen(trim($request->year_purchased)) > 0) ? $request->year_purchased : '-';
+            $inventory->supplier = (isset($request->supplier) && strlen(trim($request->supplier)) > 0) ? $request->supplier : 'PT Global Promedika Service';
+            $inventory->penyusutan = (isset($request->penyusutan) && strlen(trim($request->penyusutan)) > 0) ? $request->penyusutan : '-';
             if ($picture) {
                 $path = ($picture != null) ? Tenant::current()->domain.'/'.'picture_'.($latest_id + 1).'.'.$picture->guessExtension() : 'no_image.jpg';
                 $inventory->picture = '/images/'.$path;
                 $picture->move(public_path().'/images/'.Tenant::current()->domain.'/', 'picture_'.($latest_id + 1).'.'.$picture->guessExtension());
+            } else {
+                $inventory->picture = '/images/no_image.jpg';
             }
             $inventory->save();
     
@@ -193,14 +195,16 @@ class InventoryController extends Controller
             // $inventory->brand_id = $request->brand_id;
             $inventory->identity_id = $request->identity_id;
             $inventory->room_id = $request->room_id;
-            $inventory->price = $request->price;
-            $inventory->year_purchased = $request->year_purchased;
-            $inventory->supplier = $request->supplier;
-            $inventory->penyusutan = $request->penyusutan;
+            $inventory->price = (isset($request->price) && strlen(trim($request->price)) > 0) ? $request->price : '-';
+            $inventory->year_purchased = (isset($request->year_purchased) && strlen(trim($request->year_purchased)) > 0) ? $request->year_purchased : '-';
+            $inventory->supplier = (isset($request->supplier) && strlen(trim($request->supplier)) > 0) ? $request->supplier : 'PT Global Promedika Service';
+            $inventory->penyusutan = (isset($request->penyusutan) && strlen(trim($request->penyusutan)) > 0) ? $request->penyusutan : '-';
             if ($picture) {
                 $path = ($picture != null) ? Tenant::current()->domain.'/'.'picture_'.$inventory->id.'.'.$picture->guessExtension() : 'no_image.jpg';
                 $inventory->picture = '/images/'.$path;
                 $picture->move(public_path().'/images/'.Tenant::current()->domain.'/', 'picture_'.$inventory->id.'.'.$picture->guessExtension());
+            } else {
+                $inventory->picture = '/images/no_image.jpg';
             }
             $inventory->update();
 
