@@ -142,6 +142,15 @@ class PermissionSeeder extends Seeder
             ));
         });
 
+        Role::where('name', 'nurse')->each(function($role) use ($permissions) {
+            $role->syncPermissions(array(
+                'create complain',
+                'read complain',
+                'update complain',
+                'read response',
+            ));
+        });
+
         $user = User::firstOrCreate([
             'name' => 'Super User',
             'email' => 'super.user@gmail.com',
