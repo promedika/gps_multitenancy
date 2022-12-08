@@ -9,7 +9,7 @@ class Response extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'complain_id', 'progress_status', 'serialnumber', 'description', 'resPic'];
+    protected $fillable = ['user_id', 'complain_id', 'progress_status', 'barcode', 'description', 'resPic'];
 
     /**
      * Get the complain associated with the Response

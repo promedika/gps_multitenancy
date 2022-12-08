@@ -40,6 +40,7 @@
                 @csrf
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 <input type="hidden" name="complain_id" value="{{ $response->complain->id }}">
+                <input type="hidden" name="barcode" value="{{ $response->complain->barcode }}">
                 <div class="sm:grid sm:grid-cols-2 sm:gap-2 sm:px-6">
                     <div class="">
                         <label class="block mb-2 text-sm text-gray-00" for="progress_status">Status Respon</label>

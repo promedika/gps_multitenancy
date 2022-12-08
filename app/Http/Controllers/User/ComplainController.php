@@ -74,7 +74,7 @@ class ComplainController extends Controller
             $complain->description = $request->description;
             $complain->barcode = $request->barcode;
             if ($comPic) {
-                $path = ($comPic != null) ? Tenant::current()->domain.'/'.'comPic_'.($latest_id + 1).'.'.$comPic->getClientOriginalExtension() : 'no_image.jpg';
+                $path = ($comPic != null) ? Tenant::current()->domain.'/complains/'.'comPic_'.($latest_id + 1).'.'.$comPic->getClientOriginalExtension() : 'no_image.jpg';
                 $complain->comPic = '/images/'.$path;
                 $comPic->move(public_path().'/images/'.Tenant::current()->domain.'/complains/', 'comPic_'.($latest_id + 1).'.'.$comPic->getClientOriginalExtension());
             }

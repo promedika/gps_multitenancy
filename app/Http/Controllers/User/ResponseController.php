@@ -70,7 +70,7 @@ class ResponseController extends Controller
             $response->status = $request->status;
             $response->description = $request->description;
             if ($resPic) {                
-                $path = ($resPic != null) ? Tenant::current()->domain.'/'.'resPic_'.($latest_id + 1).'.'.$resPic->getClientOriginalExtension() : 'no_image.jpg';
+                $path = ($resPic != null) ? Tenant::current()->domain.'/responses/'.'resPic_'.($latest_id + 1).'.'.$resPic->getClientOriginalExtension() : 'no_image.jpg';
                 $response->resPic = '/images/resPic'.$path;
                 $resPic->move(public_path().'/images/'.Tenant::current()->domain.'/responses/', 'resPic_'.($latest_id + 1).'.'.$resPic->getClientOriginalExtension());
             }
@@ -131,7 +131,7 @@ class ResponseController extends Controller
             $response->user_id = $request->user_id;
             $response->progress_status = $request->progress_status;
             $response->description = $request->description;
-            $response->serialnumber = $request->serialnumber;
+            $response->barcode = $request->barcode;
             $response->status = $request->status;
             $response->created_at = date('Y-m-d H:i:s');
             $response->updated_at = date('Y-m-d H:i:s');
@@ -140,16 +140,16 @@ class ResponseController extends Controller
                 'user_id' => $response->user_id,
                 'progress_status' => $response->progress_status,
                 'description' => $response->description,
-                'serialnumber' => $response->serialnumber,
+                'barcode' => $response->barcode,
                 'status' => $response->status,
                 'created_at' => $response->created_at,
                 'updated_at' => $response->updated_at
             ]);
             
             if ($resPic) {
-                $path = ($resPic != null) ? Tenant::current()->domain.'/'.'resPic_'.$response->id.'.'.$resPic->getClientOriginalExtension() : 'no_image.jpg';
+                $path = ($resPic != null) ? Tenant::current()->domain.'/responses/'.'resPic_'.$request->complain_id.'.'.$resPic->getClientOriginalExtension() : 'no_image.jpg';
                 $response->resPic = '/images/'.$path;
-                $resPic->move(public_path().'/images/'.Tenant::current()->domain.'/', 'resPic_'.$response->id.'.'.$resPic->getClientOriginalExtension());
+                $resPic->move(public_path().'/images/'.Tenant::current()->domain.'/responses/', 'resPic_'.$request->complain_id.'.'.$resPic->getClientOriginalExtension());
                 
                 DB::table('responses')->where('complain_id', $response->complain_id)->update([
                     'resPic' => $response->resPic

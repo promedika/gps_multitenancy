@@ -88,7 +88,7 @@ th, td {
                         <tr>
                             <td colspan="2">
                                 <?php
-                                $imgCom=isset($comp->comPic) ? url($comp->comPic):public_path('/images/no_image.jpg');
+                                $imgCom=isset($comp->comPic) ? public_path($comp->comPic):public_path('/images/no_image.jpg');
                                 ?>
                             <img style="width: 300px;height:200px" src="{{$imgCom}}"></td>
                         </tr>
@@ -127,7 +127,7 @@ th, td {
                         <tr>
                             <td colspan="2">
                                 <?php
-                                        $imgRes=isset($comp->response->resPic) ? url($comp->comPic):public_path('/images/no_image.jpg');
+                                        $imgRes=isset($comp->response->resPic) ? public_path($comp->response->resPic):public_path('/images/no_image.jpg');
                                     ?>
                                     <img style="width: 300px;height:200px"src="{{$imgRes}}">
                             </td>

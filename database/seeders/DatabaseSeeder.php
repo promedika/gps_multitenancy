@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         if (Tenant::checkCurrent()) {
             $this->call([
-                NursePermissionSeeder::class,
-                // PermissionSeeder::class,
+                // NursePermissionSeeder::class,
+                PermissionSeeder::class,
                 // UserTableSeeder::class
             ]);
         }
