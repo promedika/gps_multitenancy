@@ -350,7 +350,7 @@ class InventoryController extends Controller
     public function search(Request $request)
     {
         $term = $request->search;
-        $inventory = Inventory::with('device', 'brand', 'identity', 'room', 'latest_condition', 'latest_record','supplier')
+        $inventory = Inventory::with('device', 'brand', 'identity', 'room', 'latest_condition', 'latest_record')
             ->where('barcode', 'LIKE', '%'.$term.'%')
             ->orWhere('serial', 'LIKE', '%'.$term.'%')
             ->orWhereHas('latest_record', function($query) use ($term) {

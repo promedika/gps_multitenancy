@@ -95,15 +95,15 @@
                     <td rowspan="6" style="text-align: center;">
                         <div>
                             @php
-                            $barcode = trim(str_replace("‘","",$inv->barcode));
+                            $barcode = $inv->barcode;
                             @endphp
                             @if (strlen($barcode) < 4)
                                 {{$barcode}}
-                                @else
+                            @else
                                 @php
                                 $qrcode = QrCode::size(100)
                                     ->format('svg')
-                                    ->generate(substr($barcode, 3, strlen($barcode)));
+                                    ->generate($inv->custom_barcode);
                                 @endphp
                                 <img width="100" src="data:image/png;base64,{{ base64_encode($qrcode) }}">
                             @endif
