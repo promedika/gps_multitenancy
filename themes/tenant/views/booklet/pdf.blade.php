@@ -97,7 +97,7 @@
                             @php
                             $barcode = $inv->barcode;
                             @endphp
-                            @if (strlen($barcode) < 4)
+                            @if (strlen($barcode) <= 4)
                                 {{$barcode}}
                             @else
                                 @php

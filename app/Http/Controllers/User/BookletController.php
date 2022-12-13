@@ -28,11 +28,12 @@ class BookletController extends Controller
         $db_host = explode('.', $_SERVER['HTTP_HOST'])[0];
 
         $tenant = DB::connection('host')->table('tenants')->where('database', explode('.', $_SERVER['HTTP_HOST'])[0])->get();
-        $tmpGetCode = ( strlen($tenant[0]->code) == 3 ) ? '0'.$tenant[0]->code : $tenant[0]->code;
+        $tenant_code = $tenant[0]->code;
 
         foreach ($inventories as $k => $v) {
+            $len = (substr($v->barcode, 0,1) != 0 && strlen($tenant_code) == 3) ? 3 : 4;
             $cst_barcode = trim(str_replace("‘","",$v->barcode));
-            $v->custom_barcode = substr($cst_barcode, strlen($tenant[0]->code));
+            $v->custom_barcode = (strlen($v->barcode) <= 4 && stripos($cst_barcode, $tenant_code) === false) ? '-' : substr($cst_barcode, $len);
         }
         
         $pdf = PDF::loadView('booklet.pdf', ['inventories' => $inventories]);
