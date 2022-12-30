@@ -202,20 +202,29 @@
                     <td rowspan="2" colspan="2" style="font-size: 8pt;">
                         <table style="width: 100%; font-size: 8pt;" class="table-inside">
                             <tbody>
+                                <?php 
+                                    if (isset($raw->is_tools)) {
+                                        $raw->is_tools = (array) $raw->is_tools;
+                                    }
+
+                                    if (isset($raw->tools)) {
+                                        $raw->tools = (array) $raw->tools;
+                                    }
+                                ?>
                                 <tr>
                                     <td>1. </td>
                                     <td>ESA</td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[0]) && $raw->is_tools[0] == "on")
+                                        <input disabled type="checkbox" name="is_tools[0]" @if (isset($raw->is_tools[0]) && $raw->is_tools[0] == "on")
                                             checked
                                         @endif>
                                     </td>
                                     <td>6.<td>
                                     <td>
-                                        {{ isset($raw->tools[0]) ? $raw->tools[0] : '' }}
+                                        {{ isset($raw->tools[5]) ? $raw->tools[5] : '' }}
                                     </td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[1]) && $raw->is_tools[1] == "on")
+                                        <input disabled type="checkbox" name="is_tools[5]" @if (isset($raw->is_tools[5]) && $raw->is_tools[5] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -224,16 +233,16 @@
                                     <td>2. </td>
                                     <td>Thermohygrometer</td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[2]) && $raw->is_tools[2] == "on")
+                                        <input disabled type="checkbox" name="is_tools[1]" @if (isset($raw->is_tools[1]) && $raw->is_tools[1] == "on")
                                             checked
                                         @endif>
                                     </td>
                                     <td>7.<td>
                                     <td>
-                                        {{ isset($raw->tools[1]) ? $raw->tools[1] : '' }}
+                                        {{ isset($raw->tools[6]) ? $raw->tools[6] : '' }}
                                     </td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[3]) && $raw->is_tools[3] == "on")
+                                        <input disabled type="checkbox" name="is_tools[6]" @if (isset($raw->is_tools[6]) && $raw->is_tools[6] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -242,16 +251,16 @@
                                     <td>3. </td>
                                     <td>Toolset</td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[4]) && $raw->is_tools[4] == "on")
+                                        <input disabled type="checkbox" name="is_tools[2]" @if (isset($raw->is_tools[2]) && $raw->is_tools[2] == "on")
                                             checked
                                         @endif>
                                     </td>
                                     <td>8.<td>
                                     <td>
-                                        {{ isset($raw->tools[2]) ? $raw->tools[2] : '' }}
+                                        {{ isset($raw->tools[7]) ? $raw->tools[7] : '' }}
                                     </td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[5]) && $raw->is_tools[5] == "on")
+                                        <input disabled type="checkbox" name="is_tools[7]" @if (isset($raw->is_tools[7]) && $raw->is_tools[7] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -260,16 +269,16 @@
                                     <td>4. </td>
                                     <td>Cleaning Kit</td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[6]) && $raw->is_tools[6] == "on")
+                                        <input disabled type="checkbox" name="is_tools[3]" @if (isset($raw->is_tools[3]) && $raw->is_tools[3] == "on")
                                             checked
                                         @endif>
                                     </td>
                                     <td>9.<td>
                                     <td>
-                                        {{ isset($raw->tools[3]) ? $raw->tools[3] : '' }}
+                                        {{ isset($raw->tools[8]) ? $raw->tools[8] : '' }}
                                     </td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[7]) && $raw->is_tools[7] == "on")
+                                        <input disabled type="checkbox" name="is_tools[8]" @if (isset($raw->is_tools[8]) && $raw->is_tools[8] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -278,16 +287,16 @@
                                     <td>5. </td>
                                     <td>Multitester</td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[8]) && $raw->is_tools[8] == "on")
+                                        <input disabled type="checkbox" name="is_tools[4]" @if (isset($raw->is_tools[4]) && $raw->is_tools[4] == "on")
                                             checked
                                         @endif>
                                     </td>
                                     <td>10.<td>
                                     <td>
-                                        {{ isset($raw->tools[4]) ? $raw->tools[4] : '' }}
+                                        {{ isset($raw->tools[9]) ? $raw->tools[9] : '' }}
                                     </td>
                                     <td>
-                                        <input disabled type="checkbox" name="is_tools[]" @if (isset($raw->is_tools[9]) && $raw->is_tools[9] == "on")
+                                        <input disabled type="checkbox" name="is_tools[9]" @if (isset($raw->is_tools[9]) && $raw->is_tools[9] == "on")
                                             checked
                                         @endif>
                                     </td>
@@ -445,6 +454,11 @@
                     <td style="padding: 0px; vertical-align: text-top;" colspan="2" rowspan="3">
                         <table style="width: 100%; font-size: 8pt;" class="table-inside">
                             <tbody>
+                                <?php 
+                                    if (isset($raw->func)) {
+                                        $raw->func = (array) $raw->func;
+                                    }
+                                ?>
                                 <tr style="font-size: 10pt;" class="title">
                                     <td>
                                         Pemeriksaan Fungsi Alat
@@ -603,6 +617,7 @@
                     <td colspan="2" style="font-size: 8pt;">
                         <table style="width: 100%; font-size: 8pt;" class="table-inside">
                             <tbody>
+                                @php $raw->is_el = isset($raw->is_el) ? $raw->is_el : []; @endphp
                                 <tr>
                                     <td>
                                         <span style="text-align: left;">Tahanan hubungan pertanahan</span>
@@ -617,7 +632,7 @@
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" 
-                                        @if (!in_array('el1', $raw->is_el))
+                                        @if (in_array('el1', $raw->is_el))
                                             checked
                                         @endif>
                                         N/A
@@ -637,7 +652,7 @@
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" 
-                                            @if (!in_array('el2', $raw->is_el))
+                                            @if (in_array('el2', $raw->is_el))
                                                 checked
                                             @endif>
                                         N/A
@@ -657,7 +672,7 @@
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" 
-                                        @if (!in_array('el3', $raw->is_el))
+                                        @if (in_array('el3', $raw->is_el))
                                             checked
                                         @endif>
                                         N/A
@@ -677,7 +692,7 @@
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" 
-                                        @if (!in_array('el4', $raw->is_el))
+                                        @if (in_array('el4', $raw->is_el))
                                             checked
                                         @endif>
                                         N/A
@@ -697,7 +712,7 @@
                                     </td>
                                     <td>
                                         <input disabled type="checkbox" 
-                                        @if (!in_array('el5', $raw->is_el))
+                                        @if (in_array('el5', $raw->is_el))
                                             checked
                                         @endif>
                                         N/A
@@ -861,7 +876,7 @@
                                     </td>
                                     <td style="text-align: center;">
                                         <input disabled type="checkbox" 
-                                        @if ($raw->batteryCondition[0] == "1")
+                                        @if (isset($raw->batteryCondition[0]) && $raw->batteryCondition[0] == "1")
                                             checked
                                         @endif>
                                     </td>
@@ -901,6 +916,11 @@
                     <td style="padding: 0px; vertical-align: text-top;" colspan="2">
                         <table style="width: 100%; font-size: 8pt;" class="table-inside">
                             <tbody>
+                                <?php 
+                                    if (isset($raw->maintenance)) {
+                                        $raw->maintenance = (array) $raw->maintenance;
+                                    }
+                                ?>
                                 <tr style="font-size: 10pt;" class="title">
                                     <td>
                                         Pemeliharaan Alat

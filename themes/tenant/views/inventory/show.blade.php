@@ -372,6 +372,7 @@
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
                             @foreach ($maintenances as $m)
+                                @php if ($m->is_approved_spv == 3) continue; @endphp
                                 <tr class="hover:bg-gray-100">
                                     <td class="dt-control"></td>
                                     <td class="py-3 px-3 text-left flex-nowrap">

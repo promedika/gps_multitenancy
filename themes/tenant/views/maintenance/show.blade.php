@@ -175,6 +175,16 @@
                     <div class="w-full justify-evenly flex items-center py-1">
                         <table class="align-middle">
                             <tbody>
+                                <?php 
+                                    if (isset($raw->is_tools)) {
+                                        $raw->is_tools = (array) $raw->is_tools;
+                                    }
+
+
+                                    if (isset($raw->tools)) {
+                                        $raw->tools = (array) $raw->tools;
+                                    }
+                                ?>
                                 <tr>
                                     <td class="w-4">1. </td>
                                     <td class="w-32">ESA</td>
@@ -185,23 +195,23 @@
                                                     @if (isset($raw->is_tools[0]) && $raw->is_tools[0] == "on")
                                                         checked
                                                     @endif
-                                                    type="checkbox" name="is_tools[]" class="hidden">
+                                                    type="checkbox" name="is_tools[0]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
                                     </td>
                                     <td class="w-4">6.<td>
                                     <td class="w-32">
-                                        <input disabled value="{{ isset($raw->tools[0]) ? $raw->tools[0] : '' }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                                        <input disabled value="{{ isset($raw->tools[5]) ? $raw->tools[5] : '' }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
                                                 <input disabled 
-                                                @if (isset($raw->is_tools[1]) && $raw->is_tools[1] == "on")
+                                                @if (isset($raw->is_tools[5]) && $raw->is_tools[5] == "on")
                                                     checked
                                                 @endif
-                                                type="checkbox" name="is_tools[]" class="hidden">
+                                                type="checkbox" name="is_tools[5]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -214,26 +224,26 @@
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
                                                 <input disabled 
-                                                @if (isset($raw->is_tools[2]) && $raw->is_tools[2] == "on")
+                                                @if (isset($raw->is_tools[1]) && $raw->is_tools[1] == "on")
                                                     checked
                                                 @endif
-                                                type="checkbox" name="is_tools[]" class="hidden">
+                                                type="checkbox" name="is_tools[1]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
                                     </td>
                                     <td class="w-4">7.<td>
                                     <td class="w-32">
-                                        <input disabled value="{{ isset($raw->tools[1]) ? $raw->tools[1] : '' }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                                        <input disabled value="{{ isset($raw->tools[6]) ? $raw->tools[6] : '' }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
                                                 <input disabled
-                                                @if (isset($raw->is_tools[3]) && $raw->is_tools[3] == "on")
+                                                @if (isset($raw->is_tools[6]) && $raw->is_tools[6] == "on")
                                                     checked
                                                 @endif
-                                                type="checkbox" name="is_tools[]" class="hidden">
+                                                type="checkbox" name="is_tools[6]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -246,26 +256,26 @@
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
                                                 <input disabled 
-                                                @if (isset($raw->is_tools[4]) && $raw->is_tools[4] == "on")
+                                                @if (isset($raw->is_tools[2]) && $raw->is_tools[2] == "on")
                                                     checked
                                                 @endif
-                                                type="checkbox" name="is_tools[]" class="hidden">
+                                                type="checkbox" name="is_tools[2]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
                                     </td>
                                     <td class="w-4">8.<td>
                                     <td class="w-32">
-                                        <input disabled value="{{ isset($raw->tools[2]) ? $raw->tools[2] : '' }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                                        <input disabled value="{{ isset($raw->tools[7]) ? $raw->tools[7] : '' }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
                                                 <input disabled 
-                                                @if (isset($raw->is_tools[5]) && $raw->is_tools[5] == "on")
+                                                @if (isset($raw->is_tools[7]) && $raw->is_tools[7] == "on")
                                                     checked
                                                 @endif
-                                                type="checkbox" name="is_tools[]" class="hidden">
+                                                type="checkbox" name="is_tools[7]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -278,26 +288,26 @@
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
                                                 <input disabled 
-                                                @if (isset($raw->is_tools[6]) && $raw->is_tools[6] == "on")
+                                                @if (isset($raw->is_tools[3]) && $raw->is_tools[3] == "on")
                                                     checked
                                                 @endif
-                                                type="checkbox" name="is_tools[]" class="hidden">
+                                                type="checkbox" name="is_tools[3]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
                                     </td>
                                     <td class="w-4">9.<td>
                                     <td class="w-32">
-                                        <input disabled value="{{ isset($raw->tools[3]) ? $raw->tools[3] : '' }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                                        <input disabled value="{{ isset($raw->tools[8]) ? $raw->tools[8] : '' }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
                                                 <input disabled 
-                                                @if (isset($raw->is_tools[7]) && $raw->is_tools[7] == "on")
+                                                @if (isset($raw->is_tools[8]) && $raw->is_tools[8] == "on")
                                                     checked
                                                 @endif
-                                                type="checkbox" name="is_tools[]" class="hidden">
+                                                type="checkbox" name="is_tools[8]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -310,17 +320,17 @@
                                         <label class="custom-label flex ml-3">
                                             <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
                                                 <input disabled 
-                                                @if (isset($raw->is_tools[8]) && $raw->is_tools[8] == "on")
+                                                @if (isset($raw->is_tools[4]) && $raw->is_tools[4] == "on")
                                                     checked
                                                 @endif
-                                                type="checkbox" name="is_tools[]" class="hidden">
+                                                type="checkbox" name="is_tools[4]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
                                     </td>
                                     <td class="w-4">10.<td>
                                     <td class="w-32">
-                                        <input disabled value="{{ isset($raw->tools[4]) ? $raw->tools[4] : '' }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                                        <input disabled value="{{ isset($raw->is_tools[9]) ? $raw->is_tools[9] : '' }}" type="text" name="tools[]" class="w-full text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                                     </td>
                                     <td>
                                         <label class="custom-label flex ml-3">
@@ -329,7 +339,7 @@
                                                 @if (isset($raw->is_tools[9]) && $raw->is_tools[9] == "on")
                                                     checked
                                                 @endif
-                                                type="checkbox" name="is_tools[]" class="hidden">
+                                                type="checkbox" name="is_tools[9]" class="hidden">
                                                 <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
                                             </div>
                                         </label>
@@ -554,17 +564,18 @@
                     </div>
                     <table class="align-middle my-3 mr-1">
                         <tbody id="elBody">
+                            @php $raw->is_el = isset($raw->is_el) ? $raw->is_el : []; @endphp
                             <tr>
                                 <td class="w-64">
                                     <span class="ml-2 text-xs flex items-center">Tahanan hubungan pertanahan</span>
                                 </td>
                                 <td class="form-check">
                                     <input disabled onclick="toggleInput(this)" id="el1" name="is_el[]" value="el1" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault" 
-                                    @php echo (!in_array('el1', $raw->is_el)) ? 'checked' : ''; @endphp
+                                    @php echo (in_array('el1', $raw->is_el)) ? 'checked' : ''; @endphp
                                     >
                                 </td>
                                 <td class="flex justify-start pl-2">
-                                    <p id="el1Node" class="@php echo (!in_array('el1', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
+                                    <p id="el1Node" class="@php echo (in_array('el1', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
                                         <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"
                                         value="{{ isset($raw->el[0]) && $raw->el[0] }}"> 
                                         &nbsp;&#8804;0,2&#8486;&nbsp;&nbsp;&nbsp;
@@ -577,11 +588,11 @@
                                 </td>
                                 <td>
                                     <input disabled onclick="toggleInput(this)" id="el2" name="is_el[]" value="el2" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault" 
-                                    @php echo (!in_array('el2', $raw->is_el)) ? 'checked' : ''; @endphp
+                                    @php echo (in_array('el2', $raw->is_el)) ? 'checked' : ''; @endphp
                                     >
                                 </td>
                                 <td class="flex justify-start pl-2">
-                                    <p id="el2Node" class="@php echo (!in_array('el2', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
+                                    <p id="el2Node" class="@php echo (in_array('el2', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
                                         <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"
                                         value="{{ isset($raw->el[1]) && $raw->el[1] }}"> 
                                         &nbsp;&#8804;100&#xb5;A
@@ -594,11 +605,11 @@
                                 </td>
                                 <td>
                                     <input disabled onclick="toggleInput(this)" id="el3" name="is_el[]" value="el3" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault"
-                                    @php echo (!in_array('el3', $raw->is_el)) ? 'checked' : ''; @endphp
+                                    @php echo (in_array('el3', $raw->is_el)) ? 'checked' : ''; @endphp
                                     >
                                 </td>
                                 <td class="flex justify-start pl-2">
-                                    <p id="el3Node" class="@php echo (!in_array('el3', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
+                                    <p id="el3Node" class="@php echo (in_array('el3', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
                                         <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->el[2]) && $raw->el[2] }}"> 
                                         &nbsp;&#8804;500&#xb5;A
                                     </p>
@@ -610,11 +621,11 @@
                                 </td>
                                 <td>
                                     <input disabled onclick="toggleInput(this)" id="el4" name="is_el[]" value="el4" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault"
-                                    @php echo (!in_array('el4', $raw->is_el)) ? 'checked' : ''; @endphp
+                                    @php echo (in_array('el4', $raw->is_el)) ? 'checked' : ''; @endphp
                                     >
                                 </td>
                                 <td class="flex justify-start pl-2">
-                                    <p id="el4Node" class="@php echo (!in_array('el4', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
+                                    <p id="el4Node" class="@php echo (in_array('el4', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
                                         <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->el[3]) && $raw->el[3] }}"> 
                                         &nbsp;&#8804;100&#xb5;A
                                     </p>
@@ -626,11 +637,11 @@
                                 </td>
                                 <td>
                                     <input disabled onclick="toggleInput(this)" id="el5" name="is_el[]" value="el5" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault" 
-                                    @php echo (!in_array('el5', $raw->is_el)) ? 'checked' : ''; @endphp
+                                    @php echo (in_array('el5', $raw->is_el)) ? 'checked' : ''; @endphp
                                     >
                                 </td>
                                 <td class="flex justify-start pl-2">
-                                    <p id="el5Node" class="@php echo (!in_array('el5', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
+                                    <p id="el5Node" class="@php echo (in_array('el5', $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
                                         <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->el[4]) && $raw->el[4] }}"> 
                                         &nbsp;&#8804;500&#xb5;A
                                     </p>
@@ -644,11 +655,11 @@
                                         </td>
                                         <td>
                                             <input disabled onclick="toggleInput(this)" id="el{{count($raw->el) + $i}}" name="is_el[]" value="el{{count($raw->el) + $i}}" class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="flexCheckDefault" 
-                                            @php echo (!in_array('el'.count($raw->el) + $i, $raw->is_el)) ? 'checked' : ''; @endphp
+                                            @php echo (in_array('el'.count($raw->el) + $i, $raw->is_el)) ? 'checked' : ''; @endphp
                                             >
                                         </td>
                                         <td class="flex justify-start pl-2">
-                                            <p id="el{{count($raw->el) + $i}}Node" class="@php echo (!in_array('el'.count($raw->el) + $i, $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
+                                            <p id="el{{count($raw->el) + $i}}Node" class="@php echo (in_array('el'.count($raw->el) + $i, $raw->is_el)) ? 'flex' : 'hidden'; @endphp items-center col-span-2">
                                                 <input disabled type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto" value="{{ isset($raw->el[count($raw->el) + $i]) && $raw->el[count($raw->el) + $i] }}"> 
                                                 &nbsp;&#8804;500&#xb5;A
                                             </p>
@@ -687,6 +698,11 @@
                     <div class="px-2 py-1 my-1">
                         <table class="align-middle w-full">
                             <tbody id="funcBody">
+                                <?php 
+                                    if (isset($raw->func)) {
+                                        $raw->func = (array) $raw->func;
+                                    }
+                                ?>
                                 <tr>
                                     <td class="w-48">
                                         <p class="flex items-center col-span-2">Display / Monitor</p>
@@ -1257,6 +1273,11 @@
                     <div class="px-2 py-6 my-1">
                         <table class="align-middle w-full">
                             <tbody>
+                                <?php 
+                                    if (isset($raw->maintenance)) {
+                                        $raw->maintenance = (array) $raw->maintenance;
+                                    }
+                                ?>
                                 <tr>
                                     <td class="w-64">
                                         <p class="flex items-center col-span-2">Pembersihan Main Unit</p>

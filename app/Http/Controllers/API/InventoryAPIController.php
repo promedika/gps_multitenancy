@@ -130,4 +130,33 @@ class InventoryAPIController extends Controller
             return redirect()->route('api.inventory.show', ['inventory' => $inventory->id]);
         }
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Inventory  $inventory
+     * @return \Illuminate\Http\Response
+     */
+    public function showall()
+    {
+        $inventories = Inventory::all();
+
+        $data = [];
+        foreach ($inventories as $k => $v) {
+            $data[$k] = new InventoryResource($v->loadMissing([
+                'device', 
+                'identity.brand', 
+                'room', 
+                'latest_condition', 
+                'latest_record',
+                'latest_maintenance',
+                'records',
+                'conditions',
+                'maintenances',
+                'asset'
+            ]));
+        }
+        
+        return response()->json($data, 200);
+    }
 }

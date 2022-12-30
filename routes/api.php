@@ -37,6 +37,7 @@ if (Tenant::current()) {
         Route::prefix('inventory')->group(function () {
             Route::get('/', [InventoryAPIController::class, 'index'])->name('api.inventory.index'); 
             Route::get('/{inventory}', [InventoryAPIController::class, 'show'])->name('api.inventory.show'); 
+            Route::get('/show/all', [InventoryAPIController::class, 'showall'])->name('api.inventory.showall'); 
         });
         Route::prefix('asset')->group(function () {
             Route::get('/', [AssetAPIController::class, 'index'])->name('api.asset.index'); 
