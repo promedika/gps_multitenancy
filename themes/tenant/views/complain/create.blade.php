@@ -66,7 +66,7 @@
                         <label class="block mb-2 text-sm text-gray-00" for="barcode">Barcode</label>
                         <div class="py-2 text-left">
                             
-                            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="barcode" name="barcode" type="text" required>
+                            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="barcode" name="barcode" type="text">
                                 <option></option>
                                 @foreach ($invs as $inv)
                                     <option >{{ $inv->barcode." | ".$inv->device->standard_name}}</option>

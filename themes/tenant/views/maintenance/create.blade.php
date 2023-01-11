@@ -33,7 +33,7 @@
                     Preventive Maintenance
                 </div>
                 <div class="border border-gray-300 col-span-4 flex text-lg font-semibold items-center justify-center">
-                    NAMA ALAT
+                    {{ $device->standard_name }}
                 </div>
                 <div class="border border-gray-300 col-span-3 flex flex-col items-center">
                     <div class="text-xs border-gray-300 border-b w-full flex px-2">Date : <span class="ml-auto">{{ date('d-m-Y', strtotime(now())) }}</span></div>
@@ -108,13 +108,13 @@
                     <div class="my-1 grid grid-cols-2 px-2 py-1">
                         <p class="flex items-center">Suhu Ruangan</p>
                         <p>:
-                            <input  type="number" name="temperature" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                            <input  type="text" name="temperature" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                             &#8451; <span class="ml-auto">( 21 - 25 )</span></p>
                     </div>
                     <div class="my-1 grid grid-cols-2 px-2 py-1">
                         <p class="flex items-center">Kelembaban</p>
                         <p>:
-                            <input  type="number" name="humidity" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                            <input  type="text" name="humidity" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                             % <span>( 50 - 60 )</span></p>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                     <div class="text-sm border-gray-300 bg-gray-300 font-semibold border-b w-full px-2">Kondisi Kelistrikan</div>
                     <div class="my-1 grid grid-cols-2 px-2 py-1">
                         <p class="flex items-center">Tegangan Jala - Jala :
-                            <input  type="number" name="voltage" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                            <input  type="text" name="voltage" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                             V
                         </p>
                         <span class="flex items-center form-check">
@@ -132,7 +132,7 @@
                                 UPS &nbsp;
                             </label>
                             <p id="upsNode" class="hidden items-center ml-auto"> : 
-                                <input  type="number" name="ups" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                                <input  type="text" name="ups" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                                 V
                             </p>
                         </span>
@@ -144,7 +144,7 @@
                                 Stabilizer &nbsp;
                             </label>
                             <p id="stabilizerNode" class="hidden items-center ml-auto"> : 
-                                <input  type="number" name="stabilizer" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
+                                <input  type="text" name="stabilizer" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600"> 
                                 V
                             </p>
                         </span>
@@ -438,7 +438,7 @@
                                 </td>
                                 <td class="flex justify-start pl-2">
                                     <p id="el1Node" class="hidden items-center col-span-2">
-                                        <input type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
+                                        <input type="text" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
                                         &nbsp;&#8804;0,2&#8486;&nbsp;&nbsp;&nbsp;
                                     </p>
                                 </td>
@@ -452,7 +452,7 @@
                                 </td>
                                 <td class="flex justify-start pl-2">
                                     <p id="el2Node" class="hidden items-center col-span-2">
-                                        <input  type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
+                                        <input  type="text" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
                                         &nbsp;&#8804;100&#xb5;A
                                     </p>
                                 </td>
@@ -466,7 +466,7 @@
                                 </td>
                                 <td class="flex justify-start pl-2">
                                     <p id="el3Node" class="hidden items-center col-span-2">
-                                        <input  type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
+                                        <input  type="text" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
                                         &nbsp;&#8804;500&#xb5;A
                                     </p>
                                 </td>
@@ -480,7 +480,7 @@
                                 </td>
                                 <td class="flex justify-start pl-2">
                                     <p id="el4Node" class="hidden items-center col-span-2">
-                                        <input  type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
+                                        <input  type="text" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
                                         &nbsp;&#8804;100&#xb5;A
                                     </p>
                                 </td>
@@ -494,7 +494,7 @@
                                 </td>
                                 <td class="flex justify-start pl-2">
                                     <p id="el5Node" class="hidden items-center col-span-2">
-                                        <input  type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
+                                        <input  type="text" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto"> 
                                         &nbsp;&#8804;500&#xb5;A
                                     </p>
                                 </td>
@@ -779,10 +779,10 @@
                                         <input  type="text" name="setting[]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
                                     </td>
                                     <td class="border-gray-300 text-center border-r">
-                                        <input  type="number" name="value[0][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input  type="text" name="value[0][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
                                     </td>
                                     <td class="border-gray-300 text-center border-r">
-                                        <input  type="number" name="value[1][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input  type="text" name="value[1][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
                                     </td>
                                     <td class="border-gray-300 text-center border-r">
                                         <input  type="text" name="reference[]" class="w-20 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
@@ -850,10 +850,10 @@
                                         VDC
                                     </td>
                                     <td class="border-gray-300 text-center border-r">
-                                        <input  type="number" name="battery[0][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input  type="text" name="battery[0][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
                                     </td>
                                     <td class="border-gray-300 text-center border-r">
-                                        <input  type="number" name="battery[1][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
+                                        <input  type="text" name="battery[1][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">
                                     </td>
                                     <td class="border-gray-300 text-center border-r">
                                         <div class="text-center w-20">
@@ -1497,7 +1497,7 @@
                                 '</td>'+
                                 '<td colspan="2" class="flex justify-start pl-2 py-1">'+
                                     '<p id="el5Node" class="flex items-center col-span-2">'+
-                                        '<input type="number" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">'+ 
+                                        '<input type="text" name="el[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">'+ 
                                         '<input type="text" name="elThreshold[]" class="w-16 text-sm rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">'+
                                     '</p>'+
                                 '</td>'
@@ -1586,10 +1586,10 @@
                                     '<input type="text" name="setting[]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">'+
                                 '</td>'+
                                 '<td class="border-gray-300 text-center border-r">'+
-                                    '<input type="number" name="value[0][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">'+
+                                    '<input type="text" name="value[0][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">'+
                                 '</td>'+
                                 '<td class="border-gray-300 text-center border-r">'+
-                                    '<input type="number" name="value[1][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">'+
+                                    '<input type="text" name="value[1][]" class="w-16 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">'+
                                 '</td>'+
                                 '<td class="border-gray-300 text-center border-r">'+
                                     '<input type="text" name="reference[]" class="w-20 text-xs rounded shadow border-0 focus:ring-2 focus:ring-blue-400 mx-1 text-gray-600 ml-auto">'+

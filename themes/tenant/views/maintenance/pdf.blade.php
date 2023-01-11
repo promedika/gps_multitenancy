@@ -43,18 +43,29 @@
                         <span style="font-size: 8pt;">Preventive Maintenance</span>
                     </td>
                     <td rowspan="2">
-                        <h3>NAMA ALAT</h3>
+                        <h3>{{ $device->standard_name }}</h3>
                     </td>
-                    <td style="text-align: left; font-size: 8pt; display: flex;">
-                        Date:
-                        <span style="margin-left: auto; text-align: right;">
+                    <td style="text-align: center; font-size: 8pt; display: flex; height: 50px;">
+                        <p>
+                            Date:
                             {{ date('d-m-Y', strtotime($maintenance->created_at)) }}
-                        </span>
+                        </p>
                     </td>
                 </tr>
                 <tr>
-                    <td style="text-align: center">
-                        <img width="100" height="50" src="{{ public_path('gps_logo.png') }}">
+                    <td style="text-align: center;">
+                        <div >
+                            <img height="50" src="{{ public_path('gps_logo.png') }}">
+                        </div>
+                        @if (explode('.', $_SERVER['HTTP_HOST'])[0] == 'rsudkoja') 
+                        <div> 
+                            <img height="50" src="{{ public_path('logo Koja.png') }}">
+                        </div>
+                        @elseif ((explode('.', $_SERVER['HTTP_HOST'])[0] == 'rsudkramatjati'))
+                        <div>
+                            <img height="70" src="{{ public_path('logo Kramat Jati.png') }}">
+                        </div>
+                        @endif
                     </td>
                 </tr>
                 <tr>

@@ -7,6 +7,7 @@ use App\Models\Inventory;
 use App\Models\Maintenance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Device;
 
 use PDF;
 
@@ -31,7 +32,8 @@ class MaintenanceController extends Controller
      */
     public function create(Inventory $inventory)
     {
-        return view('maintenance.create', ['inventory' => $inventory]);
+        $device = Device::find($inventory->device_id);
+        return view('maintenance.create', ['inventory' => $inventory, 'device' => $device]);
     }
 
     /**
@@ -76,11 +78,16 @@ class MaintenanceController extends Controller
         }
 
         $raw = json_decode($maintenance->raw);
-        // dd($maintenance,$raw);
+
+        $inventory = Inventory::find($maintenance->inventory_id);
+        $device = Device::find($inventory->device_id);
+        // dd($maintenance,$raw,$device);
+
         return view('maintenance.show', [
             'maintenance' => $maintenance, 
             'inventories' => Inventory::all(),
-            'raw' => $raw
+            'raw' => $raw,
+            'device' => $device
         ]);
     }
 
@@ -152,7 +159,9 @@ class MaintenanceController extends Controller
         }
 
         $raw = json_decode($maintenance->raw);
-        $pdf = PDF::loadView('maintenance.pdf', ['maintenance' => $maintenance, 'raw' => $raw]);
+        $inventory = Inventory::find($maintenance->inventory_id);
+        $device = Device::find($inventory->device_id);
+        $pdf = PDF::loadView('maintenance.pdf', ['maintenance' => $maintenance, 'raw' => $raw, 'device' => $device]);
 
         return $pdf->stream('ipm_form'.strtotime(date('Y-m-d H:i:s')).'.pdf');
         // return view('maintenance.pdf', ['maintenance' => $maintenance, 'raw' => $raw]);

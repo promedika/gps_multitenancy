@@ -356,6 +356,9 @@ class InventoryController extends Controller
             ->orWhereHas('latest_record', function($query) use ($term) {
                 $query->where('label', 'LIKE', '%'.$term.'%');
             })
+            ->orWhereHas('device', function($query) use ($term) {
+                $query->where('standard_name', 'LIKE', '%'.$term.'%');
+            })
             ->orderBy('created_at', 'desc')
             ->paginate(20);
 
