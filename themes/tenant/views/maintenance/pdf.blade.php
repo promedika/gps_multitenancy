@@ -1201,13 +1201,13 @@
                                     <td style="text-align: center; font-weight: 600;">
                                         <img style="width: 200px; height: 100px;" src="{{ public_path('stamp_none.png') }}" alt="">
                                         <div>
-                                            {{ $maintenance->user->name }}
+                                            &nbsp;
                                         </div>
                                     </td>
                                     <td style="text-align: center; font-weight: 600;">
                                         <img style="width: 200px; height: 100px;" src="{{ public_path('stamp_none.png') }}" alt="">
                                         <div>
-                                            {{ $maintenance->user->name }}
+                                            &nbsp;
                                         </div>
                                     </td>
                                 </tr>
